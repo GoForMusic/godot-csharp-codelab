@@ -81,6 +81,48 @@ public partial class Enemy : CharacterBody3D
 
 ## Simple Finite State Machine: Idle → Chase → Attack
 
+<svg width="480" height="220" viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="220" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="fsm8" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+    <marker id="fsm8b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#78786e"/>
+    </marker>
+  </defs>
+  <!-- IDLE -->
+  <rect x="25" y="85" width="110" height="50" rx="6" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="80" y="106" fill="#f5c000" font-family="monospace" font-size="13" text-anchor="middle" font-weight="bold">IDLE</text>
+  <text x="80" y="122" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">stand still</text>
+  <!-- CHASE -->
+  <rect x="185" y="85" width="110" height="50" rx="6" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="240" y="106" fill="#f5c000" font-family="monospace" font-size="13" text-anchor="middle" font-weight="bold">CHASE</text>
+  <text x="240" y="122" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">pathfind to player</text>
+  <!-- ATTACK -->
+  <rect x="345" y="85" width="110" height="50" rx="6" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="400" y="106" fill="#f5c000" font-family="monospace" font-size="13" text-anchor="middle" font-weight="bold">ATTACK</text>
+  <text x="400" y="122" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">swing + cooldown</text>
+  <!-- IDLE → CHASE -->
+  <line x1="135" y1="103" x2="185" y2="103" stroke="#f5c000" stroke-width="1.5" marker-end="url(#fsm8)"/>
+  <text x="160" y="96" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">inRange</text>
+  <text x="160" y="107" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">&amp;&amp; LOS</text>
+  <!-- CHASE → ATTACK -->
+  <line x1="295" y1="103" x2="345" y2="103" stroke="#f5c000" stroke-width="1.5" marker-end="url(#fsm8)"/>
+  <text x="320" y="96" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">dist &lt;</text>
+  <text x="320" y="107" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">attackRange</text>
+  <!-- CHASE → IDLE (arc below) -->
+  <path d="M 240 135 Q 160 185 80 135" fill="none" stroke="#78786e" stroke-width="1.5" marker-end="url(#fsm8b)"/>
+  <text x="160" y="178" fill="#78786e" font-family="monospace" font-size="8" text-anchor="middle">lost target / no LOS</text>
+  <!-- ATTACK → CHASE (arc above) -->
+  <path d="M 400 85 Q 320 38 240 85" fill="none" stroke="#78786e" stroke-width="1.5" marker-end="url(#fsm8b)"/>
+  <text x="320" y="45" fill="#78786e" font-family="monospace" font-size="8" text-anchor="middle">dist &gt; attackRange</text>
+  <!-- Start arrow -->
+  <line x1="6" y1="110" x2="25" y2="110" stroke="#f5c000" stroke-width="2" marker-end="url(#fsm8)"/>
+  <!-- Footer -->
+  <text x="240" y="210" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">transitions evaluated every physics frame via switch expression</text>
+</svg>
+
 A three-state FSM covers most enemy behaviors. Implement it with a C# enum and a switch expression:
 
 ```csharp

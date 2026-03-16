@@ -32,6 +32,40 @@ public partial class Enemy : CharacterBody3D
 
 With signals, the enemy just announces `Died` — listeners handle the rest.
 
+<svg width="480" height="190" viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="190" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="sig7" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+  </defs>
+  <!-- Emitter -->
+  <rect x="20" y="75" width="110" height="50" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="75" y="96" fill="#f5c000" font-family="monospace" font-size="12" text-anchor="middle">Enemy</text>
+  <text x="75" y="112" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">emitter</text>
+  <!-- Signal label in middle -->
+  <text x="200" y="34" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">EmitSignal(SignalName.Died)</text>
+  <text x="200" y="47" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">────────────────────</text>
+  <!-- Lines to listeners -->
+  <line x1="130" y1="88" x2="268" y2="55" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sig7)"/>
+  <line x1="130" y1="100" x2="268" y2="100" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sig7)"/>
+  <line x1="130" y1="112" x2="268" y2="145" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sig7)"/>
+  <!-- Listener 1 -->
+  <rect x="268" y="28" width="132" height="40" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="334" y="46" fill="#c8c8be" font-family="monospace" font-size="11" text-anchor="middle">ScoreSystem</text>
+  <text x="334" y="60" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">AddScore(100)</text>
+  <!-- Listener 2 -->
+  <rect x="268" y="80" width="132" height="40" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="334" y="98" fill="#c8c8be" font-family="monospace" font-size="11" text-anchor="middle">HUD</text>
+  <text x="334" y="113" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">ShowKillFeed()</text>
+  <!-- Listener 3 -->
+  <rect x="268" y="130" width="132" height="40" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="334" y="148" fill="#c8c8be" font-family="monospace" font-size="11" text-anchor="middle">SpawnManager</text>
+  <text x="334" y="163" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">OnEnemyDied()</text>
+  <!-- Footer -->
+  <text x="240" y="182" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">Enemy never holds a reference to its listeners — zero coupling</text>
+</svg>
+
 ## Declaring Signals with [Signal]
 
 ```csharp

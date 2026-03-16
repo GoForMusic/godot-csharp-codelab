@@ -122,6 +122,44 @@ public override void _PhysicsProcess(double delta)
 
 When you have a rotating camera, you want the player to move relative to where the camera is facing, not relative to world axes. The cleanest way is to pass the camera's basis:
 
+<svg width="520" height="110" viewBox="0 0 520 110" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="110" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="mah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+  </defs>
+  <!-- Stage 1 -->
+  <rect x="10" y="28" width="110" height="54" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="65" y="48" fill="#f5c000" font-family="monospace" font-size="11" text-anchor="middle">GetVector()</text>
+  <text x="65" y="63" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">move_left / right</text>
+  <text x="65" y="76" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">move_fwd / back</text>
+  <!-- Arrow -->
+  <line x1="120" y1="55" x2="155" y2="55" stroke="#f5c000" stroke-width="1.5" marker-end="url(#mah)"/>
+  <text x="137" y="49" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Vector2</text>
+  <!-- Stage 2 -->
+  <rect x="155" y="28" width="140" height="54" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="225" y="48" fill="#f5c000" font-family="monospace" font-size="11" text-anchor="middle">× CameraBasis</text>
+  <text x="225" y="63" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">camForward × −inputY</text>
+  <text x="225" y="76" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">camRight × inputX</text>
+  <!-- Arrow -->
+  <line x1="295" y1="55" x2="330" y2="55" stroke="#f5c000" stroke-width="1.5" marker-end="url(#mah)"/>
+  <text x="312" y="49" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Vector3</text>
+  <!-- Stage 3 -->
+  <rect x="330" y="28" width="90" height="54" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="375" y="52" fill="#f5c000" font-family="monospace" font-size="11" text-anchor="middle">Normalize()</text>
+  <text x="375" y="68" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">length = 1</text>
+  <!-- Arrow -->
+  <line x1="420" y1="55" x2="454" y2="55" stroke="#f5c000" stroke-width="1.5" marker-end="url(#mah)"/>
+  <text x="437" y="49" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">× Speed</text>
+  <!-- Stage 4 -->
+  <rect x="454" y="28" width="56" height="54" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="482" y="52" fill="#c8c8be" font-family="monospace" font-size="11" text-anchor="middle">Velocity</text>
+  <text x="482" y="68" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">X, Z</text>
+  <!-- Footer -->
+  <text x="260" y="100" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">camera-relative movement pipeline</text>
+</svg>
+
 ```csharp
 public partial class PlayerController : CharacterBody3D
 {

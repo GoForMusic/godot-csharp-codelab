@@ -104,6 +104,40 @@ public class StateMachine<TContext>
   <div><strong>The fluent AddState pattern</strong> — Returning <code>this</code> from <code>AddState()</code> allows chained initialization: <code>machine.AddState(new IdleState()).AddState(new ChaseState()).AddState(new AttackState())</code>. Clean and readable.</div>
 </div>
 
+<svg width="480" height="185" viewBox="0 0 480 185" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="185" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="sm20" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+  </defs>
+  <!-- StateMachine outer box -->
+  <rect x="10" y="15" width="460" height="90" rx="6" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="20" y="34" fill="#f5c000" font-family="monospace" font-size="11">StateMachine&lt;TContext&gt;</text>
+  <!-- TransitionTo row -->
+  <text x="20" y="58" fill="#c8c8be" font-family="monospace" font-size="10">TransitionTo&lt;T&gt;()</text>
+  <line x1="150" y1="53" x2="178" y2="53" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sm20)"/>
+  <text x="185" y="58" fill="#78786e" font-family="monospace" font-size="10">current.Exit(ctx)</text>
+  <line x1="300" y1="53" x2="328" y2="53" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sm20)"/>
+  <text x="335" y="58" fill="#78786e" font-family="monospace" font-size="10">next.Enter(ctx)</text>
+  <!-- Update row -->
+  <text x="20" y="88" fill="#c8c8be" font-family="monospace" font-size="10">Update(delta)</text>
+  <line x1="120" y1="83" x2="178" y2="83" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sm20)"/>
+  <text x="185" y="88" fill="#78786e" font-family="monospace" font-size="10">current.Update(ctx, delta)</text>
+  <!-- IState box -->
+  <rect x="10" y="118" width="460" height="55" rx="6" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="20" y="138" fill="#78786e" font-family="monospace" font-size="10">IState&lt;TContext&gt;</text>
+  <text x="190" y="138" fill="#c8c8be" font-family="monospace" font-size="10">Enter(ctx)</text>
+  <text x="290" y="138" fill="#c8c8be" font-family="monospace" font-size="10">Update(ctx, Δt)</text>
+  <text x="400" y="138" fill="#c8c8be" font-family="monospace" font-size="10">Exit(ctx)</text>
+  <text x="190" y="158" fill="#3a3a32" font-family="monospace" font-size="9">on enter</text>
+  <text x="290" y="158" fill="#3a3a32" font-family="monospace" font-size="9">every tick</text>
+  <text x="400" y="158" fill="#3a3a32" font-family="monospace" font-size="9">on leave</text>
+  <!-- Arrow from machine to IState -->
+  <line x1="240" y1="105" x2="240" y2="118" stroke="#78786e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="260" y="114" fill="#3a3a32" font-family="monospace" font-size="8">calls</text>
+</svg>
+
 ## Enemy AI States as Separate Classes
 
 Each state is now isolated, testable, and follows the Single Responsibility Principle:
