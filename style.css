@@ -13,20 +13,20 @@
   --border2:  #32322a;
 
   --accent:   #f5c000;   /* amber-yellow — the ONE accent */
-  --accent2:  #c99e00;   /* darker amber                 */
+  --accent2:  #5f4b03;   /* darker amber                 */
   --accent-d: #2e2500;   /* very dim amber (backgrounds) */
 
   --success:  #3dd68c;
   --danger:   #f87171;
   --warn:     #fb923c;
 
-  --text:     #c8c8be;   /* warm off-white — easy to read */
-  --text2:    #78786e;   /* mid gray                      */
-  --text3:    #3a3a32;   /* dim gray                      */
+  --text:     #eeeee4;   /* warm off-white — easy to read */
+  --text2:    #c0c0b6;   /* mid gray                      */
+  --text3:    #88887e;   /* dim gray                      */
   --code-bg:  #050504;
 
-  --mono:  'JetBrains Mono', 'Share Tech Mono', monospace;
-  --term:  'VT323', 'Share Tech Mono', monospace;
+  --mono:  'JetBrains Mono', monospace;
+  --term:  'Inter', system-ui, sans-serif;
 
   --glow-sm:  0 0 6px  rgba(245,192,0,.45);
   --glow:     0 0 12px rgba(245,192,0,.35);
@@ -41,27 +41,14 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--term);
-  font-size: 17px;
+  font-size: 15px;
   min-height: 100vh;
   overflow-x: hidden;
   background-image: radial-gradient(ellipse at 50% 0%, rgba(80,60,0,.1) 0%, transparent 70%);
 }
 
-/* ── CRT SCANLINES ── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0,0,0,.18) 3px,
-    rgba(0,0,0,.18) 4px
-  );
-  pointer-events: none;
-  z-index: 9999;
-}
+/* ── CRT SCANLINES — removed (doesn't mix well with Inter) ── */
+body::after { display: none; }
 
 /* ── CRT VIGNETTE ── */
 body::before {
@@ -209,8 +196,8 @@ body::before {
   background: var(--surface3);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--term); font-size: 13px; font-weight: 400;
-  color: var(--text3); flex-shrink: 0;
+  font-family: var(--term); font-size: 12px; font-weight: 500;
+  color: var(--text2); flex-shrink: 0;
   transition: all .12s;
 }
 
@@ -232,9 +219,9 @@ body::before {
 
 .nav-title {
   font-family: var(--term);
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--text2);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   flex: 1; min-width: 0;
 }
@@ -242,10 +229,10 @@ body::before {
 
 .nav-tag {
   font-family: var(--term);
-  font-size: 12px;
+  font-size: 11px;
   padding: 0 5px;
-  border: 1px solid var(--border);
-  color: var(--text3);
+  border: 1px solid var(--border2);
+  color: var(--text2);
   letter-spacing: 1px;
   text-transform: uppercase;
   flex-shrink: 0;
@@ -324,7 +311,7 @@ body::before {
 
 .lesson-title {
   font-family: var(--term);
-  font-size: 48px; font-weight: 400; letter-spacing: 1px;
+  font-size: 36px; font-weight: 600; letter-spacing: 0;
   line-height: 1.05; color: var(--accent);
   text-shadow: var(--glow);
   margin-bottom: 12px;
