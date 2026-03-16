@@ -270,6 +270,46 @@ public partial class EnemyNode : CharacterBody3D
 
 ## The Layered System at a Glance
 
+<svg width="480" height="215" viewBox="0 0 480 215" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="215" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="tw22d" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+    <marker id="tw22u" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#78786e"/>
+    </marker>
+  </defs>
+  <!-- Layer 1: Thin Nodes -->
+  <rect x="10" y="10" width="460" height="38" rx="5" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="240" y="26" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">Thin Nodes  (Godot infrastructure)</text>
+  <text x="240" y="40" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">PlayerNode · EnemyNode · GameBootstrapper — translate Godot events → domain calls</text>
+  <!-- arrows -->
+  <line x1="120" y1="48" x2="120" y2="65" stroke="#f5c000" stroke-width="1.5" marker-end="url(#tw22d)"/>
+  <line x1="360" y1="65" x2="360" y2="48" stroke="#78786e" stroke-width="1.5" marker-end="url(#tw22u)"/>
+  <text x="140" y="60" fill="#3a3a32" font-family="monospace" font-size="8">calls</text>
+  <text x="375" y="60" fill="#3a3a32" font-family="monospace" font-size="8">output</text>
+  <!-- Layer 2: Domain -->
+  <rect x="10" y="65" width="460" height="38" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="240" y="81" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">Domain Brains + Systems  (application)</text>
+  <text x="240" y="96" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">PlayerBrain · EnemyBrain · CombatSystem · InventorySystem — pure C#, zero Godot</text>
+  <!-- arrows -->
+  <line x1="120" y1="103" x2="120" y2="122" stroke="#f5c000" stroke-width="1.5" marker-end="url(#tw22d)"/>
+  <line x1="360" y1="122" x2="360" y2="103" stroke="#78786e" stroke-width="1.5" marker-end="url(#tw22u)"/>
+  <text x="140" y="116" fill="#3a3a32" font-family="monospace" font-size="8">uses interfaces</text>
+  <text x="375" y="116" fill="#3a3a32" font-family="monospace" font-size="8">implements</text>
+  <!-- Layer 3: Interfaces -->
+  <rect x="10" y="122" width="460" height="38" rx="5" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="240" y="138" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">Interfaces  (ports)</text>
+  <text x="240" y="153" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">IAudioService · INavigationProvider · ISaveRepository · IVfxService</text>
+  <!-- arrow -->
+  <line x1="240" y1="160" x2="240" y2="178" stroke="#f5c000" stroke-width="1.5" marker-end="url(#tw22d)"/>
+  <text x="255" y="173" fill="#3a3a32" font-family="monospace" font-size="8">implemented by</text>
+  <!-- Layer 4: Adapters -->
+  <rect x="10" y="178" width="460" height="28" rx="5" fill="#0f0f0c" stroke="#3a3a32" stroke-width="1.5"/>
+  <text x="240" y="197" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Godot Adapters  →  GodotAudioService · GodotNavigationProvider · GodotSaveRepository</text>
+</svg>
+
 <div class="grid2">
   <div class="card"><div class="card-title">Domain Layer</div><p class="card-desc"><code>CharacterStats</code>, <code>Inventory</code>, <code>DamageResult</code>, <code>EnemyBrain</code>, <code>PlayerBrain</code>, <code>StateMachine&lt;T&gt;</code> — zero Godot imports.</p></div>
   <div class="card"><div class="card-title">Application Layer</div><p class="card-desc"><code>CombatSystem</code>, <code>InventorySystem</code> — orchestrate domain objects, call services through interfaces.</p></div>

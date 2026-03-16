@@ -4,6 +4,42 @@ tag: Sys
 sub: Persist player progress using FileAccess, serialize game state to JSON with System.Text.Json, and implement auto-save on scene transitions.
 ---
 
+<svg width="480" height="148" viewBox="0 0 480 148" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="148" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="sl9s" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+    <marker id="sl9l" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#c8c8be"/>
+    </marker>
+  </defs>
+  <!-- Boxes -->
+  <rect x="8"   y="48" width="90" height="52" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="53"  y="70" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">Game</text>
+  <text x="53"  y="84" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">State</text>
+  <rect x="128" y="48" width="90" height="52" rx="4" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="173" y="70" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">JSON</text>
+  <text x="173" y="84" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Serialize</text>
+  <rect x="248" y="48" width="90" height="52" rx="4" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="293" y="70" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">File</text>
+  <text x="293" y="84" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Access</text>
+  <rect x="368" y="48" width="104" height="52" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="420" y="67" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">user://</text>
+  <text x="420" y="81" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">save.json</text>
+  <text x="420" y="94" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">on disk</text>
+  <!-- SAVE arrows (top) -->
+  <line x1="98"  y1="62" x2="128" y2="62" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sl9s)"/>
+  <line x1="218" y1="62" x2="248" y2="62" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sl9s)"/>
+  <line x1="338" y1="62" x2="368" y2="62" stroke="#f5c000" stroke-width="1.5" marker-end="url(#sl9s)"/>
+  <text x="240" y="18" fill="#f5c000" font-family="monospace" font-size="11" text-anchor="middle">SAVE  →</text>
+  <!-- LOAD arrows (bottom) -->
+  <line x1="368" y1="86" x2="338" y2="86" stroke="#c8c8be" stroke-width="1.5" marker-end="url(#sl9l)"/>
+  <line x1="248" y1="86" x2="218" y2="86" stroke="#c8c8be" stroke-width="1.5" marker-end="url(#sl9l)"/>
+  <line x1="128" y1="86" x2="98"  y2="86" stroke="#c8c8be" stroke-width="1.5" marker-end="url(#sl9l)"/>
+  <text x="240" y="132" fill="#c8c8be" font-family="monospace" font-size="11" text-anchor="middle">←  LOAD</text>
+</svg>
+
 ## FileAccess.Open() — Reading and Writing
 
 Godot wraps OS file I/O in the `FileAccess` class. Always use `user://` for save files — it's writable in both the editor and exported builds.

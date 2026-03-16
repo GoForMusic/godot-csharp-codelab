@@ -44,6 +44,22 @@ You can add NuGet packages here just like any .NET project. Common additions inc
 
 Godot uses two virtual path prefixes instead of OS-specific paths:
 
+<svg width="480" height="125" viewBox="0 0 480 125" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="125" fill="#080806" rx="8"/>
+  <rect x="15" y="12" width="210" height="100" rx="6" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="120" y="33" fill="#f5c000" font-family="monospace" font-size="13" text-anchor="middle">res://</text>
+  <text x="120" y="51" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">project root — read-only in export</text>
+  <text x="120" y="66" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">Scripts/ · Scenes/ · Assets/</text>
+  <text x="120" y="81" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">shipped with the game binary</text>
+  <text x="120" y="97" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">GD.Load&lt;T&gt;("res://...")</text>
+  <rect x="255" y="12" width="210" height="100" rx="6" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="360" y="33" fill="#c8c8be" font-family="monospace" font-size="13" text-anchor="middle">user://</text>
+  <text x="360" y="51" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">OS writable — AppData / ~/.local</text>
+  <text x="360" y="66" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">save.json · settings.cfg · logs</text>
+  <text x="360" y="81" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">writable in both editor and export</text>
+  <text x="360" y="97" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">FileAccess.Open("user://...")</text>
+</svg>
+
 <div class="grid2">
   <div class="card"><div class="card-title">res://</div><p class="card-desc">Maps to your project root. Read-only at runtime in exported builds. Use this for scenes, scripts, textures — anything shipped with the game.</p></div>
   <div class="card"><div class="card-title">user://</div><p class="card-desc">Maps to a writable OS-specific folder (AppData on Windows, ~/.local on Linux). Use this for save files, settings, and logs.</p></div>

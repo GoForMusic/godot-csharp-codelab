@@ -25,6 +25,9 @@ const LESSONS = [
   { title: 'Generic State Machine',         file: './lessons/20-state-machine.md' },
   { title: 'Godot Adapters',               file: './lessons/21-adapters.md' },
   { title: 'Thin Nodes & Wiring',          file: './lessons/22-thin-nodes.md' },
+  { title: 'Inventory System',             file: './lessons/23-inventory.md' },
+  { title: 'Tween & Procedural Animation', file: './lessons/24-tween-animation.md' },
+  { title: 'Event Bus',                    file: './lessons/25-event-bus.md' },
 ];
 
 const TOTAL  = LESSONS.length;

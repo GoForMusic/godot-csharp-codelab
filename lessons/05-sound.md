@@ -30,13 +30,43 @@ footstep.Play();
 
 The Audio Bus Layout (Project → Project Settings → Audio → Bus Layout) is your mixer. Create dedicated buses to control volume categories independently:
 
-```
-Master
-├── Music   (bus_idx: 1)
-└── SFX     (bus_idx: 2)
-    ├── Footsteps
-    └── Weapons
-```
+<svg width="480" height="195" viewBox="0 0 480 195" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="195" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="ab5m" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#78786e"/>
+    </marker>
+  </defs>
+  <!-- Master -->
+  <rect x="185" y="12" width="110" height="40" rx="5" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="240" y="29" fill="#f5c000" font-family="monospace" font-size="12" text-anchor="middle">Master</text>
+  <text x="240" y="45" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">global volume</text>
+  <!-- Branch -->
+  <line x1="240" y1="52" x2="240" y2="65" stroke="#78786e" stroke-width="1.5"/>
+  <line x1="125" y1="65" x2="355" y2="65" stroke="#78786e" stroke-width="1.5"/>
+  <line x1="125" y1="65" x2="125" y2="78" stroke="#78786e" stroke-width="1.5" marker-end="url(#ab5m)"/>
+  <line x1="355" y1="65" x2="355" y2="78" stroke="#78786e" stroke-width="1.5" marker-end="url(#ab5m)"/>
+  <!-- Music bus -->
+  <rect x="65" y="78" width="120" height="38" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="125" y="95" fill="#c8c8be" font-family="monospace" font-size="12" text-anchor="middle">Music</text>
+  <text x="125" y="109" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">AudioStreamPlayer</text>
+  <!-- SFX bus -->
+  <rect x="295" y="78" width="120" height="38" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="355" y="95" fill="#c8c8be" font-family="monospace" font-size="12" text-anchor="middle">SFX</text>
+  <text x="355" y="109" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">pooled players</text>
+  <!-- SFX sub-branches -->
+  <line x1="355" y1="116" x2="355" y2="130" stroke="#78786e" stroke-width="1"/>
+  <line x1="300" y1="130" x2="410" y2="130" stroke="#78786e" stroke-width="1"/>
+  <line x1="300" y1="130" x2="300" y2="142" stroke="#78786e" stroke-width="1" marker-end="url(#ab5m)"/>
+  <line x1="410" y1="130" x2="410" y2="142" stroke="#78786e" stroke-width="1" marker-end="url(#ab5m)"/>
+  <!-- Sub-buses -->
+  <rect x="248" y="142" width="104" height="28" rx="4" fill="#0f0f0c" stroke="#3a3a32" stroke-width="1.5"/>
+  <text x="300" y="161" fill="#78786e" font-family="monospace" font-size="10" text-anchor="middle">Footsteps</text>
+  <rect x="368" y="142" width="84" height="28" rx="4" fill="#0f0f0c" stroke="#3a3a32" stroke-width="1.5"/>
+  <text x="410" y="161" fill="#78786e" font-family="monospace" font-size="10" text-anchor="middle">Weapons</text>
+  <!-- Footer -->
+  <text x="240" y="185" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">AudioServer.SetBusVolumeDb(idx, db) — control any bus independently</text>
+</svg>
 
 Assign audio player nodes to buses via the **Bus** property in the Inspector, or from code:
 

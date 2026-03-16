@@ -35,14 +35,52 @@ When importing a `.glb` with pre-made animations, Godot splits them into individ
 
 The most useful tree root type is `AnimationNodeStateMachine`. Create one and wire up states:
 
-```
-[idle] ──(speed > 0.1)──► [walk]
-[walk] ──(speed < 0.1)──► [idle]
-[idle] ──(jump)──────────► [jump_start]
-[jump_start] ──(finished)─► [jump_fall]
-[jump_fall] ──(on_floor)──► [jump_land]
-[jump_land] ──(finished)──► [idle]
-```
+<svg width="480" height="195" viewBox="0 0 480 195" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="195" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="an4f" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#f5c000"/>
+    </marker>
+    <marker id="an4g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#78786e"/>
+    </marker>
+  </defs>
+  <!-- Start arrow -->
+  <line x1="8" y1="95" x2="28" y2="95" stroke="#f5c000" stroke-width="2" marker-end="url(#an4f)"/>
+  <!-- IDLE -->
+  <rect x="28" y="78" width="74" height="34" rx="5" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="65" y="100" fill="#f5c000" font-family="monospace" font-size="12" text-anchor="middle" font-weight="bold">idle</text>
+  <!-- WALK/RUN -->
+  <rect x="155" y="78" width="74" height="34" rx="5" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="192" y="93" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">walk</text>
+  <text x="192" y="107" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">run</text>
+  <!-- idle ↔ walk -->
+  <line x1="102" y1="89" x2="155" y2="89" stroke="#f5c000" stroke-width="1.5" marker-end="url(#an4f)"/>
+  <line x1="155" y1="103" x2="102" y2="103" stroke="#78786e" stroke-width="1.5" marker-end="url(#an4g)"/>
+  <text x="128" y="84" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">speed&gt;0.1</text>
+  <text x="128" y="113" fill="#78786e" font-family="monospace" font-size="8" text-anchor="middle">speed&lt;0.1</text>
+  <!-- jump_start -->
+  <rect x="300" y="15" width="90" height="32" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="345" y="36" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">jump_start</text>
+  <!-- jump_fall -->
+  <rect x="300" y="78" width="90" height="32" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="345" y="99" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">jump_fall</text>
+  <!-- jump_land -->
+  <rect x="300" y="142" width="90" height="32" rx="5" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="345" y="163" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">jump_land</text>
+  <!-- idle → jump_start (arc above) -->
+  <path d="M 65 78 Q 65 31 300 31" fill="none" stroke="#f5c000" stroke-width="1.5" marker-end="url(#an4f)"/>
+  <text x="178" y="24" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">jump pressed</text>
+  <!-- jump_start → jump_fall -->
+  <line x1="345" y1="47" x2="345" y2="78" stroke="#78786e" stroke-width="1.5" marker-end="url(#an4g)"/>
+  <text x="353" y="66" fill="#78786e" font-family="monospace" font-size="8">finished</text>
+  <!-- jump_fall → jump_land -->
+  <line x1="345" y1="110" x2="345" y2="142" stroke="#78786e" stroke-width="1.5" marker-end="url(#an4g)"/>
+  <text x="353" y="130" fill="#78786e" font-family="monospace" font-size="8">on_floor</text>
+  <!-- jump_land → idle (arc below) -->
+  <path d="M 300 158 Q 182 182 65 112" fill="none" stroke="#78786e" stroke-width="1.5" marker-end="url(#an4g)"/>
+  <text x="192" y="185" fill="#78786e" font-family="monospace" font-size="8" text-anchor="middle">finished → idle</text>
+</svg>
 
 Each arrow is a **Transition** — you can set:
 - **Switch Mode**: Immediate, Sync, or AtEnd

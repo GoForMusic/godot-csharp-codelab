@@ -15,6 +15,46 @@ Godot's 3D node hierarchy is built around `Node3D` as the base for anything with
   <div class="card"><div class="card-title">CollisionShape3D</div><p class="card-desc">Defines the physics shape for any physics body. Must be a child of a physics body node. Use BoxShape3D, CapsuleShape3D, etc.</p></div>
 </div>
 
+<svg width="480" height="180" viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="180" fill="#080806" rx="8"/>
+  <!-- Node base -->
+  <rect x="190" y="8" width="100" height="28" rx="4" fill="#0f0f0c" stroke="#3a3a32" stroke-width="1.5"/>
+  <text x="240" y="27" fill="#78786e" font-family="monospace" font-size="11" text-anchor="middle">Node</text>
+  <line x1="240" y1="36" x2="240" y2="50" stroke="#3a3a32" stroke-width="1.5"/>
+  <!-- Node3D -->
+  <rect x="180" y="50" width="120" height="28" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="240" y="69" fill="#f5c000" font-family="monospace" font-size="12" text-anchor="middle">Node3D</text>
+  <!-- Branch line -->
+  <line x1="240" y1="78" x2="240" y2="92" stroke="#78786e" stroke-width="1"/>
+  <line x1="48" y1="92" x2="432" y2="92" stroke="#78786e" stroke-width="1"/>
+  <line x1="48" y1="92" x2="48" y2="106" stroke="#78786e" stroke-width="1"/>
+  <line x1="168" y1="92" x2="168" y2="106" stroke="#78786e" stroke-width="1"/>
+  <line x1="312" y1="92" x2="312" y2="106" stroke="#78786e" stroke-width="1"/>
+  <line x1="432" y1="92" x2="432" y2="106" stroke="#78786e" stroke-width="1"/>
+  <!-- Leaf: CharacterBody3D -->
+  <rect x="6" y="106" width="84" height="34" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="48" y="121" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">Character</text>
+  <text x="48" y="133" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">Body3D</text>
+  <!-- Leaf: StaticBody3D -->
+  <rect x="118" y="106" width="100" height="34" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="168" y="121" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">StaticBody</text>
+  <text x="168" y="133" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">3D</text>
+  <!-- Leaf: MeshInstance3D -->
+  <rect x="264" y="106" width="96" height="34" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="312" y="121" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">MeshInstance</text>
+  <text x="312" y="133" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">3D</text>
+  <!-- Leaf: Area3D / Camera3D -->
+  <rect x="388" y="106" width="88" height="34" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="432" y="121" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">Area3D /</text>
+  <text x="432" y="133" fill="#c8c8be" font-family="monospace" font-size="8" text-anchor="middle">Camera3D</text>
+  <!-- Purpose labels -->
+  <text x="48" y="152" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">player · enemy</text>
+  <text x="168" y="152" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">floors · walls</text>
+  <text x="312" y="152" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">visuals</text>
+  <text x="432" y="152" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">triggers · view</text>
+  <text x="240" y="172" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">all inherit Transform3D from Node3D — position, rotation, scale in 3D space</text>
+</svg>
+
 A typical static platform looks like this in the scene tree:
 
 <div class="scene-tree">

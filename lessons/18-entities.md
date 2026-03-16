@@ -4,6 +4,53 @@ tag: SOLID
 sub: Model your game's core rules as plain C# classes with no Godot dependency — entities that own their invariants and value objects that represent immutable data.
 ---
 
+<svg width="480" height="198" viewBox="0 0 480 198" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="198" fill="#080806" rx="8"/>
+  <defs>
+    <marker id="dm18m" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#78786e"/>
+    </marker>
+  </defs>
+  <!-- CharacterStats (entity) -->
+  <rect x="10" y="55" width="132" height="82" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="76" y="73" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">CharacterStats</text>
+  <line x1="10" y1="79" x2="142" y2="79" stroke="#f5c000" stroke-width="1" opacity="0.3"/>
+  <text x="76" y="92" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Id, Name</text>
+  <text x="76" y="104" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Health, Armor</text>
+  <text x="76" y="116" fill="#c8c8be" font-family="monospace" font-size="9" text-anchor="middle">TakeDamage()</text>
+  <text x="76" y="128" fill="#c8c8be" font-family="monospace" font-size="9" text-anchor="middle">Heal()</text>
+  <text x="76" y="148" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">«entity»</text>
+  <!-- DamageResult (value object) -->
+  <rect x="178" y="15" width="130" height="74" rx="4" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="243" y="33" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">DamageResult</text>
+  <line x1="178" y1="39" x2="308" y2="39" stroke="#78786e" stroke-width="1" opacity="0.3"/>
+  <text x="243" y="52" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">RawDamage</text>
+  <text x="243" y="64" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">MitigatedDamage</text>
+  <text x="243" y="76" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">KilledTarget</text>
+  <text x="243" y="96" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">«value object»</text>
+  <!-- Inventory (entity) -->
+  <rect x="178" y="112" width="130" height="74" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="2"/>
+  <text x="243" y="130" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">Inventory</text>
+  <line x1="178" y1="136" x2="308" y2="136" stroke="#f5c000" stroke-width="1" opacity="0.3"/>
+  <text x="243" y="149" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">OwnerId, Items</text>
+  <text x="243" y="161" fill="#c8c8be" font-family="monospace" font-size="9" text-anchor="middle">TryAdd() / TryRemove()</text>
+  <text x="243" y="178" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">«entity»</text>
+  <!-- ItemDefinition (value object) -->
+  <rect x="342" y="55" width="130" height="82" rx="4" fill="#0f0f0c" stroke="#78786e" stroke-width="1.5"/>
+  <text x="407" y="73" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">ItemDefinition</text>
+  <line x1="342" y1="79" x2="472" y2="79" stroke="#78786e" stroke-width="1" opacity="0.3"/>
+  <text x="407" y="92" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Id, DisplayName</text>
+  <text x="407" y="104" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">MaxStackSize</text>
+  <text x="407" y="116" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">Weight</text>
+  <text x="407" y="148" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">«value object»</text>
+  <!-- CharacterStats → DamageResult -->
+  <line x1="142" y1="75" x2="178" y2="45" stroke="#78786e" stroke-width="1.5" marker-end="url(#dm18m)" stroke-dasharray="4,2"/>
+  <text x="155" y="58" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">returns</text>
+  <!-- Inventory → ItemDefinition -->
+  <line x1="308" y1="148" x2="342" y2="118" stroke="#78786e" stroke-width="1.5" marker-end="url(#dm18m)" stroke-dasharray="4,2"/>
+  <text x="325" y="133" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="middle">uses</text>
+</svg>
+
 ## What Is a Domain Entity?
 
 A **domain entity** is a plain C# object that models a real concept from your game's rules. It has identity (usually an ID), owns its own state, and enforces its invariants (business rules) internally.

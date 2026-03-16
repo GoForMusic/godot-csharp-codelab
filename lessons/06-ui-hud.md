@@ -31,6 +31,24 @@ label.OffsetTop    = 20f;
 
 ## CanvasLayer for HUD Overlay
 
+<svg width="480" height="170" viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="170" fill="#080806" rx="8"/>
+  <!-- Layer 2: Menus (top) -->
+  <rect x="38" y="18" width="404" height="38" rx="4" fill="#0f0f0c" stroke="#f5c000" stroke-width="1.5"/>
+  <text x="240" y="34" fill="#f5c000" font-family="monospace" font-size="10" text-anchor="middle">CanvasLayer  layer=2  —  Pause / Menus</text>
+  <text x="240" y="49" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">PauseMenu · GameOver · Settings  (rendered on top)</text>
+  <!-- Layer 1: HUD -->
+  <rect x="20" y="68" width="440" height="38" rx="4" fill="#0f0f0c" stroke="#c8c8be" stroke-width="1.5"/>
+  <text x="240" y="84" fill="#c8c8be" font-family="monospace" font-size="10" text-anchor="middle">CanvasLayer  layer=1  —  HUD</text>
+  <text x="240" y="99" fill="#78786e" font-family="monospace" font-size="9" text-anchor="middle">HealthBar · ScoreLabel · Crosshair · Minimap</text>
+  <!-- Layer 0: 3D World -->
+  <rect x="8" y="118" width="464" height="38" rx="4" fill="#0f0f0c" stroke="#3a3a32" stroke-width="1.5"/>
+  <text x="240" y="134" fill="#78786e" font-family="monospace" font-size="10" text-anchor="middle">Layer 0  —  3D World</text>
+  <text x="240" y="149" fill="#3a3a32" font-family="monospace" font-size="9" text-anchor="middle">Node3D · CharacterBody3D · Lights · Terrain  (rendered behind UI)</text>
+  <!-- Depth label -->
+  <text x="478" y="90" fill="#3a3a32" font-family="monospace" font-size="8" text-anchor="end" transform="rotate(-90,478,90)">depth ↑</text>
+</svg>
+
 Without a `CanvasLayer`, a Control node placed in the scene tree is affected by the 3D camera — it would appear in 3D space rather than on screen. `CanvasLayer` breaks the HUD out of 3D transforms and pins it to screen space.
 
 <div class="scene-tree">
