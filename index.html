@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Godot 4 C# 3D — Complete Codelab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-top">
+    <div class="brand">
+      <div class="brand-icon">🎮</div>
+      <div class="brand-text">
+        <div class="t1">Godot 4 C# — 3D</div>
+        <div class="t2">Complete Codelab</div>
+      </div>
+    </div>
+    <div class="prog-row">
+      <span class="prog-label" id="progLabel">Lesson 1 / 17</span>
+      <span class="prog-pct" id="progPct">6%</span>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="progFill" style="width:5.9%"></div></div>
+  </div>
+  <div class="nav-scroll">
+    <div class="nav-section-label">Foundations</div>
+    <div class="nav-item active" id="n0" onclick="go(0)">
+      <span class="nav-num">01</span>
+      <span class="nav-title">Setup &amp; Project Structure</span>
+      <span class="nav-tag tag-3d">3D</span>
+    </div>
+    <div class="nav-item" id="n1" onclick="go(1)">
+      <span class="nav-num">02</span>
+      <span class="nav-title">3D Nodes &amp; Scripts</span>
+      <span class="nav-tag tag-3d">3D</span>
+    </div>
+    <div class="nav-item" id="n2" onclick="go(2)">
+      <span class="nav-num">03</span>
+      <span class="nav-title">3D Player Movement</span>
+      <span class="nav-tag tag-3d">3D</span>
+    </div>
+    <div class="nav-item" id="n3" onclick="go(3)">
+      <span class="nav-num">04</span>
+      <span class="nav-title">Camera &amp; Mouse Input</span>
+      <span class="nav-tag tag-3d">3D</span>
+    </div>
+    <div class="nav-section-label">Visual &amp; Audio</div>
+    <div class="nav-item" id="n4" onclick="go(4)">
+      <span class="nav-num">05</span>
+      <span class="nav-title">Animations &amp; AnimationTree</span>
+      <span class="nav-tag tag-anim">Anim</span>
+    </div>
+    <div class="nav-item" id="n5" onclick="go(5)">
+      <span class="nav-num">06</span>
+      <span class="nav-title">Sound &amp; Music System</span>
+      <span class="nav-tag tag-audio">Audio</span>
+    </div>
+    <div class="nav-section-label">Game Systems</div>
+    <div class="nav-item" id="n6" onclick="go(6)">
+      <span class="nav-num">07</span>
+      <span class="nav-title">UI &amp; HUD System</span>
+      <span class="nav-tag tag-ui">UI</span>
+    </div>
+    <div class="nav-item" id="n7" onclick="go(7)">
+      <span class="nav-num">08</span>
+      <span class="nav-title">Signals &amp; Events</span>
+      <span class="nav-tag tag-sys">Sys</span>
+    </div>
+    <div class="nav-item" id="n8" onclick="go(8)">
+      <span class="nav-num">09</span>
+      <span class="nav-title">Enemy AI &amp; Behavior</span>
+      <span class="nav-tag tag-ai">AI</span>
+    </div>
+    <div class="nav-item" id="n9" onclick="go(9)">
+      <span class="nav-num">10</span>
+      <span class="nav-title">Save &amp; Load System</span>
+      <span class="nav-tag tag-sys">Sys</span>
+    </div>
+    <div class="nav-item" id="n10" onclick="go(10)">
+      <span class="nav-num">11</span>
+      <span class="nav-title">Scene Management</span>
+      <span class="nav-tag tag-sys">Sys</span>
+    </div>
+    <div class="nav-item" id="n11" onclick="go(11)">
+      <span class="nav-num">12</span>
+      <span class="nav-title">Final Project</span>
+      <span class="nav-tag tag-3d">3D</span>
+    </div>
+    <div class="nav-section-label">Advanced</div>
+    <div class="nav-item" id="n12" onclick="go(12)">
+      <span class="nav-num">13</span>
+      <span class="nav-title">Visual Effects &amp; Particles</span>
+      <span class="nav-tag tag-sys">VFX</span>
+    </div>
+    <div class="nav-item" id="n13" onclick="go(13)">
+      <span class="nav-num">14</span>
+      <span class="nav-title">Custom Shaders</span>
+      <span class="nav-tag tag-sys">Shaders</span>
+    </div>
+    <div class="nav-item" id="n14" onclick="go(14)">
+      <span class="nav-num">15</span>
+      <span class="nav-title">Multiplayer</span>
+      <span class="nav-tag tag-sys">Net</span>
+    </div>
+    <div class="nav-item" id="n15" onclick="go(15)">
+      <span class="nav-num">16</span>
+      <span class="nav-title">Export &amp; Deploy</span>
+      <span class="nav-tag tag-sys">Export</span>
+    </div>
+    <div class="nav-item" id="n16" onclick="go(16)">
+      <span class="nav-num">17</span>
+      <span class="nav-title">GUT Testing</span>
+      <span class="nav-tag tag-sys">Test</span>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main" id="mainScroll">
+  <div class="topbar">
+    <div class="topbar-crumb">
+      <span>Godot 4 C# 3D</span><span class="sep">/</span>
+      <span class="cur" id="crumbCur">Setup &amp; Project Structure</span>
+    </div>
+    <div class="topbar-nav">
+      <button class="tb-btn" onclick="prev()">← Prev</button>
+      <button class="tb-btn primary" onclick="next()">Next →</button>
+    </div>
+  </div>
+  <div class="lesson-wrap">
+<!-- ============================================================ -->
+<!-- LESSON 0: Setup & Project Structure -->
+<!-- ============================================================ -->
+<div class="lesson active" id="l0">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">01</span>
+      <span class="lesson-cat-badge tag-3d">Foundations</span>
+    </div>
+    <h1 class="lesson-h1">Setup &amp; Project Structure</h1>
+    <p class="lesson-lead">Get Godot 4 .NET, configure your IDE, and learn the recommended folder layout for a production-ready 3D project.</p>
+  </div>
+
+  <h2>What You Need</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-ico">🎮</div>
+      <div class="card-title">Godot 4 .NET</div>
+      <div class="card-desc">Download the <strong>Mono / .NET</strong> build from godotengine.org — the standard build cannot run C#.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">🔷</div>
+      <div class="card-title">.NET SDK 8+</div>
+      <div class="card-desc">Install from <strong>dot.net</strong>. Run <code>dotnet --version</code> to confirm. Godot 4.3+ requires .NET 8.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">💻</div>
+      <div class="card-title">VS Code / Rider</div>
+      <div class="card-desc">VS Code with the <strong>C# Dev Kit</strong> extension, or JetBrains Rider for full refactoring support.</div>
+    </div>
+  </div>
+
+  <h2>Creating a 3D Project</h2>
+  <div class="step-row"><div class="step-pill done">1</div><span>Open Godot → <strong>New Project</strong> → enter project name</span></div>
+  <div class="step-row"><div class="step-pill done">2</div><span>Select renderer: choose <strong>Forward+</strong> for full 3D feature support</span></div>
+  <div class="step-row"><div class="step-pill done">3</div><span>Click <strong>Create &amp; Edit</strong> — Godot generates the project folder</span></div>
+  <div class="step-row"><div class="step-pill done">4</div><span>In the editor: <strong>Project → Tools → C# → Create C# Solution</strong></span></div>
+  <div class="step-row"><div class="step-pill done">5</div><span>Open the <code>.sln</code> in VS Code or Rider and verify build succeeds</span></div>
+
+  <h2>Recommended Folder Structure</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">res:// (Project Root)</div>
+    <div class="sn" style="padding-left:1rem">📁 scenes/ <span style="color:var(--text3)">— .tscn scene files</span></div>
+    <div class="sn" style="padding-left:2rem">📁 levels/</div>
+    <div class="sn" style="padding-left:2rem">📁 characters/</div>
+    <div class="sn" style="padding-left:2rem">📁 ui/</div>
+    <div class="sn" style="padding-left:1rem">📁 scripts/ <span style="color:var(--text3)">— .cs files</span></div>
+    <div class="sn" style="padding-left:2rem">📁 player/</div>
+    <div class="sn" style="padding-left:2rem">📁 enemies/</div>
+    <div class="sn" style="padding-left:2rem">📁 managers/</div>
+    <div class="sn" style="padding-left:1rem">📁 assets/ <span style="color:var(--text3)">— textures, models, audio</span></div>
+    <div class="sn" style="padding-left:2rem">📁 textures/</div>
+    <div class="sn" style="padding-left:2rem">📁 models/</div>
+    <div class="sn" style="padding-left:2rem">📁 audio/</div>
+    <div class="sn" style="padding-left:1rem">📁 autoloads/ <span style="color:var(--text3)">— singleton scripts</span></div>
+    <div class="sn" style="padding-left:1rem">📄 project.godot</div>
+    <div class="sn" style="padding-left:1rem">📄 MyGame.sln</div>
+  </div>
+
+  <h2>Key 3D Nodes</h2>
+  <table>
+    <thead><tr><th>Node</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Node3D</code></td><td>Base for all 3D objects — provides Transform3D, position, rotation, scale</td></tr>
+      <tr><td><code>MeshInstance3D</code></td><td>Renders a 3D mesh with a material</td></tr>
+      <tr><td><code>CharacterBody3D</code></td><td>Physics body for player/NPC movement (MoveAndSlide)</td></tr>
+      <tr><td><code>RigidBody3D</code></td><td>Fully physics-simulated body with mass, forces, torque</td></tr>
+      <tr><td><code>StaticBody3D</code></td><td>Immovable collider (floors, walls, terrain)</td></tr>
+      <tr><td><code>Area3D</code></td><td>Overlap detection — triggers, damage zones, pickups</td></tr>
+      <tr><td><code>Camera3D</code></td><td>The player's view into the 3D world</td></tr>
+      <tr><td><code>DirectionalLight3D</code></td><td>Sun-like light — infinite parallel rays with shadow support</td></tr>
+      <tr><td><code>WorldEnvironment</code></td><td>Sky, ambient light, fog, and post-process effects</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Your First 3D Scene</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">GDScene</span>
+      <span class="cb-file">world.tscn (node tree)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="cm">// Scene tree for a minimal 3D world:</span>
+<span class="cls">Node3D</span>  (World - root)
+  ├── <span class="cls">WorldEnvironment</span>
+  ├── <span class="cls">DirectionalLight3D</span>
+  ├── <span class="cls">StaticBody3D</span>  (Ground)
+  │     └── <span class="cls">CollisionShape3D</span>  (BoxShape3D)
+  ├── <span class="cls">MeshInstance3D</span>  (GroundMesh)
+  └── <span class="cls">CharacterBody3D</span>  (Player)
+        ├── <span class="cls">CollisionShape3D</span>  (CapsuleShape3D)
+        ├── <span class="cls">MeshInstance3D</span>  (PlayerMesh)
+        └── <span class="cls">Camera3D</span></pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">💡</span>
+    <div><strong>Forward+ vs Mobile vs Compatibility</strong> — Forward+ uses Vulkan and supports SSAO, SSR, volumetric fog, and glow. Mobile is Vulkan but stripped down for mobile GPUs. Compatibility uses OpenGL 3 for maximum device reach but lacks many post-process effects.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">Which renderer gives full 3D feature support in Godot 4?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qSetup')"><span class="quiz-key">A</span> Compatibility</div>
+      <div class="quiz-o" onclick="qz(this,true,'qSetup')"><span class="quiz-key">B</span> Forward+</div>
+      <div class="quiz-o" onclick="qz(this,false,'qSetup')"><span class="quiz-key">C</span> Mobile</div>
+      <div class="quiz-o" onclick="qz(this,false,'qSetup')"><span class="quiz-key">D</span> Vulkan Only</div>
+    </div>
+    <div class="quiz-fb" id="qSetup"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 1 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">← Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: 3D Nodes &amp; Scripts →</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 1: 3D Nodes & Scripts -->
+<div class="lesson" id="l1">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">02</span>
+      <span class="lesson-cat-badge tag-3d">Foundations</span>
+    </div>
+    <h1 class="lesson-h1">3D Nodes &amp; Scripts</h1>
+    <p class="lesson-lead">Attach C# scripts to 3D nodes, understand the core math types &mdash; Vector3, Transform3D, Basis, Quaternion &mdash; and write your first rotating object.</p>
+  </div>
+
+  <h2>Your First 3D Script</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">MyObject.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">MyObject</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">RotationSpeed</span> = <span class="nm">2.0f</span>;
+    [<span class="at">Export</span>] <span class="kw">public</span> <span class="cls">Vector3</span> <span class="vr">StartPosition</span> = <span class="cls">Vector3</span>.<span class="pr">Zero</span>;
+
+    <span class="kw">private float</span> <span class="vr">_time</span> = <span class="nm">0f</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="cls">GlobalPosition</span> = <span class="vr">StartPosition</span>;
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"MyObject ready at: "</span>, <span class="cls">GlobalPosition</span>);
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_Process</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="vr">_time</span> += (<span class="kw">float</span>)<span class="vr">delta</span>;
+        <span class="fn">RotateY</span>(<span class="vr">RotationSpeed</span> * (<span class="kw">float</span>)<span class="vr">delta</span>);
+        <span class="cls">Position</span> = <span class="vr">StartPosition</span> + <span class="kw">new</span> <span class="cls">Vector3</span>(
+            <span class="nm">0f</span>,
+            <span class="cls">Mathf</span>.<span class="fn">Sin</span>(<span class="vr">_time</span> * <span class="nm">2f</span>) * <span class="nm">0.3f</span>,
+            <span class="nm">0f</span>
+        );
+    }
+}</pre></div>
+  </div>
+
+  <h2>Essential 3D Types</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-ico">&#x1F4D0;</div>
+      <div class="card-title">Vector3</div>
+      <div class="card-desc">Three-component float vector for position, direction, scale, and velocity. Key constants: <code>Vector3.Zero</code>, <code>Vector3.Up</code>, <code>Vector3.Forward</code> (0,0,-1).</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F504;</div>
+      <div class="card-title">Transform3D</div>
+      <div class="card-desc">Combines a <code>Basis</code> (rotation+scale) and <code>Origin</code> (position). Every Node3D has <code>Transform</code> (local) and <code>GlobalTransform</code>.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F9ED;</div>
+      <div class="card-title">Basis</div>
+      <div class="card-desc">3x3 matrix for orientation and scale. Columns are local X, Y, Z axes. Use <code>basis.GetEuler()</code> or convert to/from Quaternion.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F503;</div>
+      <div class="card-title">Quaternion</div>
+      <div class="card-desc">Four-component rotation &mdash; no gimbal lock. Use <code>Quaternion.FromEuler()</code> and <code>Slerp()</code> for smooth rotational interpolation.</div>
+    </div>
+  </div>
+
+  <h2>Working with 3D Types</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">TypeExamples.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="cm">// Vector3 operations</span>
+<span class="cls">Vector3</span> <span class="vr">a</span> = <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">1f</span>, <span class="nm">0f</span>, <span class="nm">0f</span>);
+<span class="cls">Vector3</span> <span class="vr">b</span> = <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">0f</span>, <span class="nm">0f</span>, <span class="nm">-1f</span>);
+<span class="kw">float</span> <span class="vr">dist</span>    = <span class="vr">a</span>.<span class="fn">DistanceTo</span>(<span class="vr">b</span>);
+<span class="cls">Vector3</span> <span class="vr">dir</span>   = (<span class="vr">b</span> - <span class="vr">a</span>).<span class="fn">Normalized</span>();
+<span class="cls">Vector3</span> <span class="vr">moved</span> = <span class="vr">a</span>.<span class="fn">MoveToward</span>(<span class="vr">b</span>, <span class="nm">0.1f</span>);
+<span class="cls">Vector3</span> <span class="vr">lerp</span>  = <span class="vr">a</span>.<span class="fn">Lerp</span>(<span class="vr">b</span>, <span class="nm">0.5f</span>);
+
+<span class="cm">// Local axes from transform</span>
+<span class="cls">Vector3</span> <span class="vr">fwd</span>   = -<span class="pr">GlobalTransform</span>.<span class="pr">Basis</span>.<span class="pr">Z</span>; <span class="cm">// forward = -Z in Godot</span>
+<span class="cls">Vector3</span> <span class="vr">right</span> =  <span class="pr">GlobalTransform</span>.<span class="pr">Basis</span>.<span class="pr">X</span>;
+<span class="cls">Vector3</span> <span class="vr">up</span>    =  <span class="pr">GlobalTransform</span>.<span class="pr">Basis</span>.<span class="pr">Y</span>;
+
+<span class="cm">// LookAt rotates node to face a world position</span>
+<span class="fn">LookAt</span>(<span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">5f</span>, <span class="nm">0f</span>, <span class="nm">5f</span>), <span class="cls">Vector3</span>.<span class="pr">Up</span>);
+
+<span class="cm">// Quaternion slerp for smooth rotation</span>
+<span class="cls">Quaternion</span> <span class="vr">from</span> = <span class="pr">Quaternion</span>;
+<span class="cls">Quaternion</span> <span class="vr">to</span>   = <span class="kw">new</span> <span class="cls">Quaternion</span>(<span class="cls">Vector3</span>.<span class="pr">Up</span>, <span class="cls">Mathf</span>.<span class="pr">Pi</span>);
+<span class="pr">Quaternion</span> = <span class="vr">from</span>.<span class="fn">Slerp</span>(<span class="vr">to</span>, (<span class="kw">float</span>)<span class="vr">delta</span> * <span class="nm">3f</span>);</pre></div>
+  </div>
+
+  <h2>Getting Nodes in C#</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">NodeAccess.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">public partial class</span> <span class="cls">NodeAccess</span> : <span class="cls">Node3D</span>
+{
+    <span class="kw">private</span> <span class="cls">MeshInstance3D</span>     <span class="vr">_mesh</span>;
+    <span class="kw">private</span> <span class="cls">CollisionShape3D</span>   <span class="vr">_col</span>;
+    <span class="kw">private</span> <span class="cls">AudioStreamPlayer3D</span> <span class="vr">_audio</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="cm">// By node name</span>
+        <span class="vr">_mesh</span>  = <span class="fn">GetNode</span>&lt;<span class="cls">MeshInstance3D</span>&gt;(<span class="str">"MeshInstance3D"</span>);
+
+        <span class="cm">// Null-safe (returns null if not found)</span>
+        <span class="vr">_col</span>   = <span class="fn">GetNodeOrNull</span>&lt;<span class="cls">CollisionShape3D</span>&gt;(<span class="str">"CollisionShape3D"</span>);
+
+        <span class="cm">// Unique name (set % in scene, faster lookup)</span>
+        <span class="vr">_audio</span> = <span class="fn">GetNode</span>&lt;<span class="cls">AudioStreamPlayer3D</span>&gt;(<span class="str">"%AudioPlayer"</span>);
+
+        <span class="cm">// Autoload singleton from project settings</span>
+        <span class="kw">var</span> <span class="vr">gm</span> = <span class="fn">GetNode</span>&lt;<span class="cls">GameManager</span>&gt;(<span class="str">"/root/GameManager"</span>);
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x2705;</span>
+    <div><strong>Always cache in _Ready()</strong> &mdash; calling <code>GetNode()</code> every frame in <code>_Process()</code> is expensive. Store references in private fields and reuse them.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What is the forward direction vector in Godot 4's 3D coordinate system?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'q0')"><span class="quiz-key">A</span> +Z (0, 0, 1)</div>
+      <div class="quiz-o" onclick="qz(this,true,'q0')"><span class="quiz-key">B</span> -Z (0, 0, -1)</div>
+      <div class="quiz-o" onclick="qz(this,false,'q0')"><span class="quiz-key">C</span> +Y (0, 1, 0)</div>
+      <div class="quiz-o" onclick="qz(this,false,'q0')"><span class="quiz-key">D</span> -X (-1, 0, 0)</div>
+    </div>
+    <div class="quiz-fb" id="q0"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 2 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: 3D Player Movement &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 2: 3D Player Movement -->
+<div class="lesson" id="l2">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">03</span>
+      <span class="lesson-cat-badge tag-3d">Physics</span>
+    </div>
+    <h1 class="lesson-h1">3D Player Movement</h1>
+    <p class="lesson-lead">Build a full CharacterBody3D player controller with gravity, jumping, and camera-relative WASD movement using MoveAndSlide.</p>
+  </div>
+
+  <h2>Scene Setup</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">Player (CharacterBody3D)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; CollisionShape3D (CapsuleShape3D)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; MeshInstance3D (PlayerMesh)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; SpringArm3D (CameraArm)</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; Camera3D</div>
+    <div class="sn" style="padding-left:1rem">&#x2514;&#x2500;&#x2500; Node3D (YawPivot)</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; Node3D (PitchPivot)</div>
+  </div>
+
+  <h2>Full Player Controller</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Player.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">Player</span> : <span class="cls">CharacterBody3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">Speed</span>        = <span class="nm">5f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">JumpVelocity</span> = <span class="nm">7f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">Acceleration</span> = <span class="nm">12f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">Friction</span>     = <span class="nm">10f</span>;
+
+    <span class="kw">private const float</span> <span class="vr">Gravity</span> = <span class="nm">9.8f</span> * <span class="nm">2.5f</span>; <span class="cm">// stronger for snappy feel</span>
+
+    <span class="kw">private</span> <span class="cls">Node3D</span> <span class="vr">_yawPivot</span>;   <span class="cm">// camera horizontal rotation</span>
+    <span class="kw">private</span> <span class="cls">Node3D</span> <span class="vr">_pitchPivot</span>; <span class="cm">// camera vertical rotation</span>
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_yawPivot</span>   = <span class="fn">GetNode</span>&lt;<span class="cls">Node3D</span>&gt;(<span class="str">"YawPivot"</span>);
+        <span class="vr">_pitchPivot</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Node3D</span>&gt;(<span class="str">"YawPivot/PitchPivot"</span>);
+        <span class="cls">Input</span>.<span class="pr">MouseMode</span> = <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Captured</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_PhysicsProcess</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="kw">var</span> <span class="vr">vel</span> = <span class="cls">Velocity</span>;
+
+        <span class="cm">// --- Gravity ---</span>
+        <span class="kw">if</span> (!<span class="fn">IsOnFloor</span>())
+            <span class="vr">vel</span>.<span class="pr">Y</span> -= <span class="vr">Gravity</span> * (<span class="kw">float</span>)<span class="vr">delta</span>;
+
+        <span class="cm">// --- Jump ---</span>
+        <span class="kw">if</span> (<span class="cls">Input</span>.<span class="fn">IsActionJustPressed</span>(<span class="str">"jump"</span>) &amp;&amp; <span class="fn">IsOnFloor</span>())
+            <span class="vr">vel</span>.<span class="pr">Y</span> = <span class="vr">JumpVelocity</span>;
+
+        <span class="cm">// --- Input direction (relative to camera yaw) ---</span>
+        <span class="cls">Vector2</span> <span class="vr">input</span> = <span class="cls">Input</span>.<span class="fn">GetVector</span>(
+            <span class="str">"move_left"</span>, <span class="str">"move_right"</span>,
+            <span class="str">"move_forward"</span>, <span class="str">"move_back"</span>
+        );
+
+        <span class="cm">// Transform input by camera yaw so WASD follows camera facing</span>
+        <span class="cls">Vector3</span> <span class="vr">dir</span> = (<span class="vr">_yawPivot</span>.<span class="pr">GlobalTransform</span>.<span class="pr">Basis</span> *
+                        <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="vr">input</span>.<span class="pr">X</span>, <span class="nm">0f</span>, <span class="vr">input</span>.<span class="pr">Y</span>)).<span class="fn">Normalized</span>();
+
+        <span class="cm">// --- Horizontal velocity with acceleration/friction ---</span>
+        <span class="kw">if</span> (<span class="vr">dir</span> != <span class="cls">Vector3</span>.<span class="pr">Zero</span>)
+        {
+            <span class="vr">vel</span>.<span class="pr">X</span> = <span class="cls">Mathf</span>.<span class="fn">MoveToward</span>(<span class="vr">vel</span>.<span class="pr">X</span>, <span class="vr">dir</span>.<span class="pr">X</span> * <span class="vr">Speed</span>, <span class="vr">Acceleration</span> * (<span class="kw">float</span>)<span class="vr">delta</span>);
+            <span class="vr">vel</span>.<span class="pr">Z</span> = <span class="cls">Mathf</span>.<span class="fn">MoveToward</span>(<span class="vr">vel</span>.<span class="pr">Z</span>, <span class="vr">dir</span>.<span class="pr">Z</span> * <span class="vr">Speed</span>, <span class="vr">Acceleration</span> * (<span class="kw">float</span>)<span class="vr">delta</span>);
+        }
+        <span class="kw">else</span>
+        {
+            <span class="cm">// Decelerate to zero when no input</span>
+            <span class="vr">vel</span>.<span class="pr">X</span> = <span class="cls">Mathf</span>.<span class="fn">MoveToward</span>(<span class="vr">vel</span>.<span class="pr">X</span>, <span class="nm">0f</span>, <span class="vr">Friction</span> * (<span class="kw">float</span>)<span class="vr">delta</span>);
+            <span class="vr">vel</span>.<span class="pr">Z</span> = <span class="cls">Mathf</span>.<span class="fn">MoveToward</span>(<span class="vr">vel</span>.<span class="pr">Z</span>, <span class="nm">0f</span>, <span class="vr">Friction</span> * (<span class="kw">float</span>)<span class="vr">delta</span>);
+        }
+
+        <span class="cls">Velocity</span> = <span class="vr">vel</span>;
+        <span class="fn">MoveAndSlide</span>(); <span class="cm">// handles collision, slopes, stairs</span>
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F4A1;</span>
+    <div><strong>Camera Basis Trick</strong> &mdash; multiplying the input vector by <code>_yawPivot.GlobalTransform.Basis</code> converts it from camera-local space to world space. This makes WASD always move relative to where the camera is facing, regardless of rotation.</div>
+  </div>
+
+  <h2>Input Map Setup</h2>
+  <table>
+    <thead><tr><th>Action Name</th><th>Default Key</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>move_forward</code></td><td>W / Up Arrow</td><td>Move forward</td></tr>
+      <tr><td><code>move_back</code></td><td>S / Down Arrow</td><td>Move backward</td></tr>
+      <tr><td><code>move_left</code></td><td>A / Left Arrow</td><td>Strafe left</td></tr>
+      <tr><td><code>move_right</code></td><td>D / Right Arrow</td><td>Strafe right</td></tr>
+      <tr><td><code>jump</code></td><td>Space</td><td>Jump</td></tr>
+      <tr><td><code>sprint</code></td><td>Shift</td><td>Sprint (multiply speed)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">Which method handles CharacterBody3D movement with automatic collision response?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qMove')"><span class="quiz-key">A</span> Move()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qMove')"><span class="quiz-key">B</span> MoveAndSlide()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qMove')"><span class="quiz-key">C</span> Translate()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qMove')"><span class="quiz-key">D</span> AddForce()</div>
+    </div>
+    <div class="quiz-fb" id="qMove"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 3 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Camera &amp; Mouse Input &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 3: Camera & Mouse Input -->
+<div class="lesson" id="l3">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">04</span>
+      <span class="lesson-cat-badge tag-3d">3D</span>
+    </div>
+    <h1 class="lesson-h1">Camera &amp; Mouse Input</h1>
+    <p class="lesson-lead">Implement a full mouse-look camera with yaw/pitch pivots, mouse capture/release, and optional SpringArm3D for smooth collision-avoiding third-person view.</p>
+  </div>
+
+  <h2>Camera Controller</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">CameraController.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="cm">/// Attach to the YawPivot Node3D. PitchPivot is a child of YawPivot.</span>
+<span class="kw">public partial class</span> <span class="cls">CameraController</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">Sensitivity</span> = <span class="nm">0.003f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">PitchMin</span>    = <span class="nm">-80f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">PitchMax</span>    =  <span class="nm">80f</span>;
+
+    <span class="kw">private</span> <span class="cls">Node3D</span> <span class="vr">_pitchPivot</span>;
+    <span class="kw">private float</span>  <span class="vr">_yaw</span>   = <span class="nm">0f</span>;
+    <span class="kw">private float</span>  <span class="vr">_pitch</span> = <span class="nm">0f</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_pitchPivot</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Node3D</span>&gt;(<span class="str">"PitchPivot"</span>);
+        <span class="cls">Input</span>.<span class="pr">MouseMode</span> = <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Captured</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_Input</span>(<span class="cls">InputEvent</span> <span class="vr">e</span>)
+    {
+        <span class="cm">// Release cursor on Escape</span>
+        <span class="kw">if</span> (<span class="vr">e</span>.<span class="fn">IsActionPressed</span>(<span class="str">"ui_cancel"</span>))
+        {
+            <span class="cls">Input</span>.<span class="pr">MouseMode</span> = <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Visible</span>;
+        }
+
+        <span class="cm">// Re-capture on click</span>
+        <span class="kw">if</span> (<span class="vr">e</span> <span class="kw">is</span> <span class="cls">InputEventMouseButton</span> <span class="vr">mb</span>)
+        {
+            <span class="kw">if</span> (<span class="vr">mb</span>.<span class="pr">Pressed</span>)
+                <span class="cls">Input</span>.<span class="pr">MouseMode</span> = <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Captured</span>;
+        }
+
+        <span class="cm">// Mouse look</span>
+        <span class="kw">if</span> (<span class="vr">e</span> <span class="kw">is</span> <span class="cls">InputEventMouseMotion</span> <span class="vr">mm</span> &amp;&amp;
+            <span class="cls">Input</span>.<span class="pr">MouseMode</span> == <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Captured</span>)
+        {
+            <span class="cm">// Yaw: rotate the whole pivot horizontally</span>
+            <span class="vr">_yaw</span> -= <span class="vr">mm</span>.<span class="pr">Relative</span>.<span class="pr">X</span> * <span class="vr">Sensitivity</span>;
+            <span class="fn">RotationDegrees</span> = <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">0f</span>, <span class="cls">Mathf</span>.<span class="fn">RadToDeg</span>(<span class="vr">_yaw</span>), <span class="nm">0f</span>);
+
+            <span class="cm">// Pitch: rotate only PitchPivot, clamped</span>
+            <span class="vr">_pitch</span> -= <span class="vr">mm</span>.<span class="pr">Relative</span>.<span class="pr">Y</span> * <span class="vr">Sensitivity</span>;
+            <span class="vr">_pitch</span>  = <span class="cls">Mathf</span>.<span class="fn">Clamp</span>(
+                <span class="vr">_pitch</span>,
+                <span class="cls">Mathf</span>.<span class="fn">DegToRad</span>(<span class="vr">PitchMin</span>),
+                <span class="cls">Mathf</span>.<span class="fn">DegToRad</span>(<span class="vr">PitchMax</span>)
+            );
+            <span class="vr">_pitchPivot</span>.<span class="fn">RotationDegrees</span> = <span class="kw">new</span> <span class="cls">Vector3</span>(
+                <span class="cls">Mathf</span>.<span class="fn">RadToDeg</span>(<span class="vr">_pitch</span>), <span class="nm">0f</span>, <span class="nm">0f</span>
+            );
+        }
+    }
+}</pre></div>
+  </div>
+
+  <h2>Input Map for Camera</h2>
+  <table>
+    <thead><tr><th>Action</th><th>Input</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>ui_cancel</code></td><td>Escape</td><td>Built-in — releases mouse cursor</td></tr>
+      <tr><td>Mouse Motion</td><td>Mouse X/Y</td><td>Read via InputEventMouseMotion</td></tr>
+      <tr><td><code>camera_zoom_in</code></td><td>Scroll Up</td><td>For SpringArm spring length</td></tr>
+      <tr><td><code>camera_zoom_out</code></td><td>Scroll Down</td><td>Adjust SpringArm3D.SpringLength</td></tr>
+    </tbody>
+  </table>
+
+  <h2>SpringArm3D for Third-Person</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">SpringArmSetup.cs (partial)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="cm">// Add SpringArm3D as child of PitchPivot</span>
+<span class="cm">// Camera3D is child of SpringArm3D (at local Z = 0)</span>
+<span class="kw">private</span> <span class="cls">SpringArm3D</span> <span class="vr">_arm</span>;
+<span class="kw">private const float</span> <span class="vr">ArmMin</span> = <span class="nm">1f</span>;
+<span class="kw">private const float</span> <span class="vr">ArmMax</span> = <span class="nm">6f</span>;
+
+<span class="kw">public override void</span> <span class="fn">_Ready</span>()
+{
+    <span class="vr">_arm</span> = <span class="fn">GetNode</span>&lt;<span class="cls">SpringArm3D</span>&gt;(<span class="str">"PitchPivot/SpringArm3D"</span>);
+    <span class="vr">_arm</span>.<span class="pr">SpringLength</span> = <span class="nm">3f</span>;
+}
+
+<span class="kw">public override void</span> <span class="fn">_Input</span>(<span class="cls">InputEvent</span> <span class="vr">e</span>)
+{
+    <span class="kw">if</span> (<span class="vr">e</span> <span class="kw">is</span> <span class="cls">InputEventMouseButton</span> <span class="vr">mb</span> &amp;&amp; <span class="vr">mb</span>.<span class="pr">Pressed</span>)
+    {
+        <span class="kw">if</span> (<span class="vr">mb</span>.<span class="pr">ButtonIndex</span> == <span class="cls">MouseButton</span>.<span class="pr">WheelUp</span>)
+            <span class="vr">_arm</span>.<span class="pr">SpringLength</span> = <span class="cls">Mathf</span>.<span class="fn">Clamp</span>(<span class="vr">_arm</span>.<span class="pr">SpringLength</span> - <span class="nm">0.5f</span>, <span class="vr">ArmMin</span>, <span class="vr">ArmMax</span>);
+        <span class="kw">if</span> (<span class="vr">mb</span>.<span class="pr">ButtonIndex</span> == <span class="cls">MouseButton</span>.<span class="pr">WheelDown</span>)
+            <span class="vr">_arm</span>.<span class="pr">SpringLength</span> = <span class="cls">Mathf</span>.<span class="fn">Clamp</span>(<span class="vr">_arm</span>.<span class="pr">SpringLength</span> + <span class="nm">0.5f</span>, <span class="vr">ArmMin</span>, <span class="vr">ArmMax</span>);
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F4CC;</span>
+    <div><strong>SpringArm3D</strong> automatically shortens its length when a wall is between the player and camera, preventing the camera from clipping through geometry. Set its collision mask to match your wall/floor layers.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">How do you hide and lock the mouse cursor for gameplay in Godot 4 C#?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qCam')"><span class="quiz-key">A</span> cursor.hide()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qCam')"><span class="quiz-key">B</span> Input.MouseMode = Input.MouseModeEnum.Captured</div>
+      <div class="quiz-o" onclick="qz(this,false,'qCam')"><span class="quiz-key">C</span> Cursor.Visible = false</div>
+      <div class="quiz-o" onclick="qz(this,false,'qCam')"><span class="quiz-key">D</span> SetMouseVisible(false)</div>
+    </div>
+    <div class="quiz-fb" id="qCam"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 4 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Animations &amp; AnimationTree &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 4: Animations & AnimationTree -->
+<div class="lesson" id="l4">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">05</span>
+      <span class="lesson-cat-badge tag-anim">Animations</span>
+    </div>
+    <h1 class="lesson-h1">Animations &amp; AnimationTree</h1>
+    <p class="lesson-lead">Drive character animations with AnimationPlayer and blend/transition between states using AnimationTree's state machine &mdash; all from C#.</p>
+  </div>
+
+  <h2>Animation State Machine Diagram</h2>
+  <div class="svg-wrap">
+    <div class="svg-wrap-title">Player Animation State Machine</div>
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#0a0c12;border-radius:8px;">
+      <defs>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#3d8ef0"/>
+        </marker>
+        <marker id="arr4g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#00e5c0"/>
+        </marker>
+        <marker id="arr4o" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#f5a623"/>
+        </marker>
+      </defs>
+      <!-- IDLE -->
+      <rect x="40" y="95" width="110" height="44" rx="10" fill="rgba(61,142,240,0.15)" stroke="#3d8ef0" stroke-width="2"/>
+      <text x="95" y="122" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">IDLE</text>
+      <!-- WALK -->
+      <rect x="210" y="95" width="110" height="44" rx="10" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="2"/>
+      <text x="265" y="122" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">WALK</text>
+      <!-- RUN -->
+      <rect x="380" y="95" width="110" height="44" rx="10" fill="rgba(245,166,35,0.12)" stroke="#f5a623" stroke-width="2"/>
+      <text x="435" y="122" text-anchor="middle" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">RUN</text>
+      <!-- JUMP -->
+      <rect x="210" y="185" width="110" height="44" rx="10" fill="rgba(239,68,68,0.12)" stroke="#ef4444" stroke-width="2"/>
+      <text x="265" y="212" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">JUMP</text>
+      <!-- FALL -->
+      <rect x="380" y="185" width="110" height="44" rx="10" fill="rgba(239,68,68,0.10)" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="435" y="212" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">FALL</text>
+      <!-- Arrows: IDLE <-> WALK -->
+      <line x1="150" y1="112" x2="207" y2="112" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <line x1="210" y1="120" x2="153" y2="120" stroke="#00e5c0" stroke-width="1.5" marker-end="url(#arr4g)"/>
+      <!-- Arrows: WALK <-> RUN -->
+      <line x1="320" y1="112" x2="377" y2="112" stroke="#00e5c0" stroke-width="1.5" marker-end="url(#arr4g)"/>
+      <line x1="380" y1="120" x2="323" y2="120" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arr4o)"/>
+      <!-- Arrow: IDLE -> JUMP -->
+      <path d="M95,139 Q95,165 207,185" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arr4o)"/>
+      <!-- Arrow: WALK -> JUMP -->
+      <line x1="265" y1="139" x2="265" y2="183" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arr4o)"/>
+      <!-- Arrow: JUMP -> FALL -->
+      <line x1="320" y1="207" x2="377" y2="207" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arr4o)"/>
+      <!-- Arrow: FALL -> IDLE (land) -->
+      <path d="M435,229 Q435,248 265,248 Q150,248 95,139" fill="none" stroke="#3d8ef0" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr4)"/>
+      <!-- Labels -->
+      <text x="180" y="107" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="9">speed&gt;0</text>
+      <text x="350" y="107" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="9">speed&gt;4</text>
+      <text x="283" y="167" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="9">jump</text>
+      <text x="355" y="202" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="9">apex</text>
+      <text x="300" y="245" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="9">on_floor</text>
+    </svg>
+  </div>
+
+  <h2>AnimationPlayer for Doors</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Door.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">Door</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public bool</span> <span class="vr">StartOpen</span> = <span class="kw">false</span>;
+
+    <span class="kw">private</span> <span class="cls">AnimationPlayer</span> <span class="vr">_anim</span>;
+    <span class="kw">private bool</span> <span class="vr">_isOpen</span> = <span class="kw">false</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_anim</span> = <span class="fn">GetNode</span>&lt;<span class="cls">AnimationPlayer</span>&gt;(<span class="str">"AnimationPlayer"</span>);
+        <span class="vr">_anim</span>.<span class="pr">AnimationFinished</span> += <span class="vr">OnAnimationFinished</span>;
+
+        <span class="kw">if</span> (<span class="vr">StartOpen</span>) <span class="fn">Open</span>();
+    }
+
+    <span class="kw">public void</span> <span class="fn">Open</span>()
+    {
+        <span class="kw">if</span> (<span class="vr">_isOpen</span>) <span class="kw">return</span>;
+        <span class="vr">_isOpen</span> = <span class="kw">true</span>;
+        <span class="vr">_anim</span>.<span class="fn">Play</span>(<span class="str">"door_open"</span>);
+    }
+
+    <span class="kw">public void</span> <span class="fn">Close</span>()
+    {
+        <span class="kw">if</span> (!<span class="vr">_isOpen</span>) <span class="kw">return</span>;
+        <span class="vr">_isOpen</span> = <span class="kw">false</span>;
+        <span class="vr">_anim</span>.<span class="fn">PlayBackwards</span>(<span class="str">"door_open"</span>); <span class="cm">// reuse animation reversed</span>
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnAnimationFinished</span>(<span class="cls">StringName</span> <span class="vr">animName</span>)
+    {
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Door animation '{animName}' finished."</span>);
+    }
+}</pre></div>
+  </div>
+
+  <h2>AnimationTree State Machine in C#</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Player.cs (animation portion)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">private</span> <span class="cls">AnimationTree</span>    <span class="vr">_animTree</span>;
+<span class="kw">private</span> <span class="cls">AnimationNodeStateMachinePlayback</span> <span class="vr">_sm</span>;
+
+<span class="kw">public override void</span> <span class="fn">_Ready</span>()
+{
+    <span class="vr">_animTree</span> = <span class="fn">GetNode</span>&lt;<span class="cls">AnimationTree</span>&gt;(<span class="str">"AnimationTree"</span>);
+    <span class="vr">_animTree</span>.<span class="pr">Active</span> = <span class="kw">true</span>;
+
+    <span class="cm">// Get the state machine playback controller</span>
+    <span class="vr">_sm</span> = (<span class="cls">AnimationNodeStateMachinePlayback</span>)
+          <span class="vr">_animTree</span>.<span class="fn">Get</span>(<span class="str">"parameters/playback"</span>);
+}
+
+<span class="kw">private void</span> <span class="fn">UpdateAnimations</span>(<span class="cls">Vector3</span> <span class="vr">velocity</span>)
+{
+    <span class="kw">float</span> <span class="vr">speed</span> = <span class="kw">new</span> <span class="cls">Vector2</span>(<span class="vr">velocity</span>.<span class="pr">X</span>, <span class="vr">velocity</span>.<span class="pr">Z</span>).<span class="fn">Length</span>();
+
+    <span class="cm">// Pass blend amounts for directional movement blending</span>
+    <span class="vr">_animTree</span>.<span class="fn">Set</span>(<span class="str">"parameters/Walk/blend_position"</span>, <span class="vr">speed</span> / <span class="vr">Speed</span>);
+
+    <span class="cm">// Transition between states using Travel()</span>
+    <span class="kw">if</span> (!<span class="fn">IsOnFloor</span>())
+    {
+        <span class="kw">if</span> (<span class="cls">Velocity</span>.<span class="pr">Y</span> &gt; <span class="nm">0.1f</span>)
+            <span class="vr">_sm</span>.<span class="fn">Travel</span>(<span class="str">"Jump"</span>);
+        <span class="kw">else</span>
+            <span class="vr">_sm</span>.<span class="fn">Travel</span>(<span class="str">"Fall"</span>);
+    }
+    <span class="kw">else if</span> (<span class="vr">speed</span> &gt; <span class="nm">4f</span>)
+        <span class="vr">_sm</span>.<span class="fn">Travel</span>(<span class="str">"Run"</span>);
+    <span class="kw">else if</span> (<span class="vr">speed</span> &gt; <span class="nm">0.1f</span>)
+        <span class="vr">_sm</span>.<span class="fn">Travel</span>(<span class="str">"Walk"</span>);
+    <span class="kw">else</span>
+        <span class="vr">_sm</span>.<span class="fn">Travel</span>(<span class="str">"Idle"</span>);
+}</pre></div>
+  </div>
+
+  <h2>Animation Scene Tree</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">Player (CharacterBody3D)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; Armature (Node3D)</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; Skeleton3D</div>
+    <div class="sn" style="padding-left:3rem">&#x2514;&#x2500;&#x2500; MeshInstance3D (skinned mesh)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; AnimationPlayer <span style="color:var(--text3)">&#x2190; holds raw clips</span></div>
+    <div class="sn" style="padding-left:1rem">&#x2514;&#x2500;&#x2500; AnimationTree <span style="color:var(--text3)">&#x2190; state machine logic</span></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F4A1;</span>
+    <div><strong>Travel() vs Play()</strong> &mdash; <code>Travel()</code> follows the transition conditions defined in the AnimationTree state machine (respecting blend times and conditions). <code>Play()</code> on AnimationPlayer jumps directly with no blending. Always prefer <code>Travel()</code> for character animations.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">Which method transitions between AnimationTree states while respecting blend times?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qAnim')"><span class="quiz-key">A</span> Play()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAnim')"><span class="quiz-key">B</span> Switch()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qAnim')"><span class="quiz-key">C</span> Travel()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAnim')"><span class="quiz-key">D</span> Transition()</div>
+    </div>
+    <div class="quiz-fb" id="qAnim"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 5 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Sound &amp; Music System &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 5: Sound & Music System -->
+<div class="lesson" id="l5">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">06</span>
+      <span class="lesson-cat-badge tag-audio">Audio</span>
+    </div>
+    <h1 class="lesson-h1">Sound &amp; Music System</h1>
+    <p class="lesson-lead">Build a centralized AudioManager autoload that pools SFX players, streams background music, and handles 3D positional audio for immersive environments.</p>
+  </div>
+
+  <h2>Audio Node Types</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-ico">&#x1F50A;</div>
+      <div class="card-title">AudioStreamPlayer</div>
+      <div class="card-desc">Non-positional audio. Perfect for UI sounds, background music, and global game events. Uses the Master bus by default.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F4E1;</div>
+      <div class="card-title">AudioStreamPlayer3D</div>
+      <div class="card-desc">3D positional audio. Attenuates by distance, supports Doppler effect. Place it in the world where the sound originates.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F3B5;</div>
+      <div class="card-title">AudioStreamPlayer2D</div>
+      <div class="card-desc">2D positional audio. Useful in hybrid 2D/3D games for UI planes or minimaps with spatial audio feedback.</div>
+    </div>
+  </div>
+
+  <h2>AudioManager Autoload Singleton</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">AudioManager.cs (autoload)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+<span class="kw">using</span> <span class="cls">System</span>.<span class="cls">Collections</span>.<span class="cls">Generic</span>;
+
+<span class="kw">public partial class</span> <span class="cls">AudioManager</span> : <span class="cls">Node</span>
+{
+    <span class="kw">private const int</span> <span class="vr">PoolSize</span> = <span class="nm">8</span>;
+
+    <span class="kw">private</span> <span class="cls">AudioStreamPlayer</span>   <span class="vr">_musicPlayer</span>;
+    <span class="kw">private</span> <span class="cls">List</span>&lt;<span class="cls">AudioStreamPlayer</span>&gt; <span class="vr">_sfxPool</span> = <span class="kw">new</span>();
+    <span class="kw">private int</span> <span class="vr">_poolIndex</span> = <span class="nm">0</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="cm">// Create music player</span>
+        <span class="vr">_musicPlayer</span> = <span class="kw">new</span> <span class="cls">AudioStreamPlayer</span> { <span class="pr">Bus</span> = <span class="str">"Music"</span> };
+        <span class="fn">AddChild</span>(<span class="vr">_musicPlayer</span>);
+
+        <span class="cm">// Create SFX pool for non-positional sounds</span>
+        <span class="kw">for</span> (<span class="kw">int</span> <span class="vr">i</span> = <span class="nm">0</span>; <span class="vr">i</span> &lt; <span class="vr">PoolSize</span>; <span class="vr">i</span>++)
+        {
+            <span class="kw">var</span> <span class="vr">p</span> = <span class="kw">new</span> <span class="cls">AudioStreamPlayer</span> { <span class="pr">Bus</span> = <span class="str">"SFX"</span> };
+            <span class="fn">AddChild</span>(<span class="vr">p</span>);
+            <span class="vr">_sfxPool</span>.<span class="fn">Add</span>(<span class="vr">p</span>);
+        }
+    }
+
+    <span class="cm">/// Play a non-positional sound effect with optional pitch variance</span>
+    <span class="kw">public void</span> <span class="fn">PlaySFX</span>(<span class="cls">AudioStream</span> <span class="vr">stream</span>, <span class="kw">float</span> <span class="vr">pitchVariance</span> = <span class="nm">0f</span>)
+    {
+        <span class="kw">var</span> <span class="vr">player</span> = <span class="vr">_sfxPool</span>[<span class="vr">_poolIndex</span>];
+        <span class="vr">player</span>.<span class="pr">Stream</span> = <span class="vr">stream</span>;
+        <span class="vr">player</span>.<span class="pr">PitchScale</span> = <span class="nm">1f</span> + (<span class="kw">float</span>)<span class="cls">GD</span>.<span class="fn">RandRange</span>(-<span class="vr">pitchVariance</span>, <span class="vr">pitchVariance</span>);
+        <span class="vr">player</span>.<span class="fn">Play</span>();
+
+        <span class="vr">_poolIndex</span> = (<span class="vr">_poolIndex</span> + <span class="nm">1</span>) % <span class="vr">PoolSize</span>; <span class="cm">// round-robin</span>
+    }
+
+    <span class="cm">/// Crossfade to new music track</span>
+    <span class="kw">public void</span> <span class="fn">PlayMusic</span>(<span class="cls">AudioStream</span> <span class="vr">track</span>, <span class="kw">float</span> <span class="vr">volume</span> = <span class="nm">0f</span>)
+    {
+        <span class="kw">if</span> (<span class="vr">_musicPlayer</span>.<span class="pr">Stream</span> == <span class="vr">track</span>) <span class="kw">return</span>;
+        <span class="vr">_musicPlayer</span>.<span class="pr">Stream</span> = <span class="vr">track</span>;
+        <span class="vr">_musicPlayer</span>.<span class="pr">VolumeDb</span> = <span class="vr">volume</span>;
+        <span class="vr">_musicPlayer</span>.<span class="fn">Play</span>();
+    }
+
+    <span class="kw">public void</span> <span class="fn">StopMusic</span>() =&gt; <span class="vr">_musicPlayer</span>.<span class="fn">Stop</span>();
+
+    <span class="cm">/// Retrieve AudioManager from anywhere</span>
+    <span class="kw">public static</span> <span class="cls">AudioManager</span> <span class="fn">Instance</span>(<span class="cls">Node</span> <span class="vr">node</span>) =&gt;
+        <span class="vr">node</span>.<span class="fn">GetNode</span>&lt;<span class="cls">AudioManager</span>&gt;(<span class="str">"/root/AudioManager"</span>);
+}</pre></div>
+  </div>
+
+  <h2>3D Positional Sound (Explosion)</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Explosion.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">Explosion</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public</span> <span class="cls">AudioStream</span> <span class="vr">ExplosionSFX</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">MaxDistance</span> = <span class="nm">40f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">PitchVariance</span> = <span class="nm">0.15f</span>;
+
+    <span class="kw">private</span> <span class="cls">AudioStreamPlayer3D</span> <span class="vr">_audio</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_audio</span> = <span class="kw">new</span> <span class="cls">AudioStreamPlayer3D</span>
+        {
+            <span class="pr">Stream</span>         = <span class="vr">ExplosionSFX</span>,
+            <span class="pr">MaxDistance</span>    = <span class="vr">MaxDistance</span>,
+            <span class="pr">AttenuationModel</span> = <span class="cls">AudioStreamPlayer3D</span>.<span class="cls">AttenuationModelEnum</span>.<span class="pr">InverseSquare</span>,
+            <span class="pr">UnitSize</span>       = <span class="nm">5f</span>,
+            <span class="pr">Bus</span>            = <span class="str">"SFX"</span>,
+            <span class="pr">PitchScale</span>     = <span class="nm">1f</span> + (<span class="kw">float</span>)<span class="cls">GD</span>.<span class="fn">RandRange</span>(-<span class="vr">PitchVariance</span>, <span class="vr">PitchVariance</span>)
+        };
+        <span class="fn">AddChild</span>(<span class="vr">_audio</span>);
+        <span class="vr">_audio</span>.<span class="fn">Play</span>();
+        <span class="cm">// Auto-remove when done</span>
+        <span class="vr">_audio</span>.<span class="pr">Finished</span> += () =&gt; <span class="fn">QueueFree</span>();
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F3B6;</span>
+    <div><strong>Pitch Variance</strong> &mdash; playing the same sound with slight random pitch variation (<code>PitchScale</code> ± 0.1–0.2) prevents repetitive audio fatigue, especially for impact sounds, footsteps, and ambient effects. This is standard in commercial games.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What class plays non-positional (global) audio, such as UI sounds and background music?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qAudio')"><span class="quiz-key">A</span> AudioStreamPlayer3D</div>
+      <div class="quiz-o" onclick="qz(this,true,'qAudio')"><span class="quiz-key">B</span> AudioStreamPlayer</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAudio')"><span class="quiz-key">C</span> AudioPlayer</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAudio')"><span class="quiz-key">D</span> SoundPlayer</div>
+    </div>
+    <div class="quiz-fb" id="qAudio"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 6 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: UI &amp; HUD System &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 6: UI & HUD System -->
+<div class="lesson" id="l6">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">07</span>
+      <span class="lesson-cat-badge tag-ui">UI</span>
+    </div>
+    <h1 class="lesson-h1">UI &amp; HUD System</h1>
+    <p class="lesson-lead">Build a responsive HUD using CanvasLayer so it renders on top of all 3D content. Connect it to game state with signals for health bars, ammo counters, and pause menus.</p>
+  </div>
+
+  <h2>HUD Scene Tree</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">HUD (CanvasLayer)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; MarginContainer</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; VBoxContainer</div>
+    <div class="sn" style="padding-left:3rem">&#x251C;&#x2500;&#x2500; HBoxContainer (top bar)</div>
+    <div class="sn" style="padding-left:4rem">&#x251C;&#x2500;&#x2500; TextureProgressBar (HealthBar)</div>
+    <div class="sn" style="padding-left:4rem">&#x251C;&#x2500;&#x2500; Label (AmmoLabel)</div>
+    <div class="sn" style="padding-left:4rem">&#x2514;&#x2500;&#x2500; Label (ScoreLabel)</div>
+    <div class="sn" style="padding-left:3rem">&#x2514;&#x2500;&#x2500; CenterContainer (crosshair)</div>
+    <div class="sn" style="padding-left:4rem">&#x2514;&#x2500;&#x2500; TextureRect (Crosshair)</div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F4CC;</span>
+    <div><strong>CanvasLayer</strong> renders its children in 2D screen space, always on top of the 3D viewport. Set its <code>Layer</code> property to a high number (e.g., 10) if you need multiple overlapping canvas layers for stacking UI panels.</div>
+  </div>
+
+  <h2>HUD Controller</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">HUD.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">HUD</span> : <span class="cls">CanvasLayer</span>
+{
+    <span class="kw">private</span> <span class="cls">TextureProgressBar</span> <span class="vr">_healthBar</span>;
+    <span class="kw">private</span> <span class="cls">Label</span>              <span class="vr">_ammoLabel</span>;
+    <span class="kw">private</span> <span class="cls">Label</span>              <span class="vr">_scoreLabel</span>;
+    <span class="kw">private</span> <span class="cls">Control</span>            <span class="vr">_pauseMenu</span>;
+    <span class="kw">private int</span>                <span class="vr">_score</span> = <span class="nm">0</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_healthBar</span>  = <span class="fn">GetNode</span>&lt;<span class="cls">TextureProgressBar</span>&gt;(<span class="str">"%HealthBar"</span>);
+        <span class="vr">_ammoLabel</span>  = <span class="fn">GetNode</span>&lt;<span class="cls">Label</span>&gt;(<span class="str">"%AmmoLabel"</span>);
+        <span class="vr">_scoreLabel</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Label</span>&gt;(<span class="str">"%ScoreLabel"</span>);
+        <span class="vr">_pauseMenu</span>  = <span class="fn">GetNode</span>&lt;<span class="cls">Control</span>&gt;(<span class="str">"%PauseMenu"</span>);
+
+        <span class="cm">// Ensure HUD updates even when the game is paused</span>
+        <span class="pr">ProcessMode</span> = <span class="cls">ProcessModeEnum</span>.<span class="pr">Always</span>;
+        <span class="vr">_pauseMenu</span>.<span class="pr">Visible</span> = <span class="kw">false</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_Process</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="kw">if</span> (<span class="cls">Input</span>.<span class="fn">IsActionJustPressed</span>(<span class="str">"ui_cancel"</span>))
+            <span class="fn">TogglePause</span>();
+    }
+
+    <span class="kw">public void</span> <span class="fn">SetHealth</span>(<span class="kw">float</span> <span class="vr">current</span>, <span class="kw">float</span> <span class="vr">max</span>)
+    {
+        <span class="vr">_healthBar</span>.<span class="pr">MaxValue</span> = <span class="vr">max</span>;
+        <span class="vr">_healthBar</span>.<span class="pr">Value</span>    = <span class="vr">current</span>;
+    }
+
+    <span class="kw">public void</span> <span class="fn">SetAmmo</span>(<span class="kw">int</span> <span class="vr">current</span>, <span class="kw">int</span> <span class="vr">total</span>)
+    {
+        <span class="vr">_ammoLabel</span>.<span class="pr">Text</span> = <span class="str">$"{current} / {total}"</span>;
+    }
+
+    <span class="kw">public void</span> <span class="fn">AddScore</span>(<span class="kw">int</span> <span class="vr">points</span>)
+    {
+        <span class="vr">_score</span> += <span class="vr">points</span>;
+        <span class="vr">_scoreLabel</span>.<span class="pr">Text</span> = <span class="str">$"Score: {_score:N0}"</span>;
+    }
+
+    <span class="kw">private void</span> <span class="fn">TogglePause</span>()
+    {
+        <span class="kw">bool</span> <span class="vr">paused</span> = !<span class="fn">GetTree</span>().<span class="pr">Paused</span>;
+        <span class="fn">GetTree</span>().<span class="pr">Paused</span>     = <span class="vr">paused</span>;
+        <span class="vr">_pauseMenu</span>.<span class="pr">Visible</span>  = <span class="vr">paused</span>;
+        <span class="cls">Input</span>.<span class="pr">MouseMode</span> = <span class="vr">paused</span>
+            ? <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Visible</span>
+            : <span class="cls">Input</span>.<span class="cls">MouseModeEnum</span>.<span class="pr">Captured</span>;
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-ico">&#x26A0;&#xFE0F;</span>
+    <div><strong>ProcessMode = Always</strong> &mdash; by default nodes stop processing when the scene tree is paused. Setting <code>ProcessMode = ProcessModeEnum.Always</code> ensures the HUD (especially pause menus and health bars) continues updating even while gameplay is frozen.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What node ensures HUD elements render in 2D screen space on top of the 3D world?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'q1')"><span class="quiz-key">A</span> Control</div>
+      <div class="quiz-o" onclick="qz(this,false,'q1')"><span class="quiz-key">B</span> Viewport</div>
+      <div class="quiz-o" onclick="qz(this,true,'q1')"><span class="quiz-key">C</span> CanvasLayer</div>
+      <div class="quiz-o" onclick="qz(this,false,'q1')"><span class="quiz-key">D</span> SubViewport</div>
+    </div>
+    <div class="quiz-fb" id="q1"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 7 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Signals &amp; Events &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 7: Signals & Events -->
+<div class="lesson" id="l7">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">08</span>
+      <span class="lesson-cat-badge tag-sys">Signals</span>
+    </div>
+    <h1 class="lesson-h1">Signals &amp; Events</h1>
+    <p class="lesson-lead">Decouple game systems using Godot signals and a global EventBus autoload. Learn to declare custom signals, subscribe from other nodes, and avoid memory leaks.</p>
+  </div>
+
+  <h2>Custom Signals in C#</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Player.cs (signals)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">Player</span> : <span class="cls">CharacterBody3D</span>
+{
+    <span class="cm">// Declare signals with [Signal] attribute</span>
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">HealthChangedEventHandler</span>(<span class="kw">float</span> <span class="vr">current</span>, <span class="kw">float</span> <span class="vr">max</span>);
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">DiedEventHandler</span>();
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">ItemPickedUpEventHandler</span>(<span class="cls">StringName</span> <span class="vr">itemId</span>);
+
+    <span class="kw">private float</span> <span class="vr">_health</span>    = <span class="nm">100f</span>;
+    <span class="kw">private float</span> <span class="vr">_maxHealth</span> = <span class="nm">100f</span>;
+
+    <span class="kw">public void</span> <span class="fn">TakeDamage</span>(<span class="kw">float</span> <span class="vr">amount</span>)
+    {
+        <span class="vr">_health</span> = <span class="cls">Mathf</span>.<span class="fn">Max</span>(<span class="nm">0f</span>, <span class="vr">_health</span> - <span class="vr">amount</span>);
+
+        <span class="cm">// Emit signal — any subscriber is notified</span>
+        <span class="fn">EmitSignal</span>(<span class="cls">SignalName</span>.<span class="pr">HealthChanged</span>, <span class="vr">_health</span>, <span class="vr">_maxHealth</span>);
+
+        <span class="kw">if</span> (<span class="vr">_health</span> == <span class="nm">0f</span>)
+            <span class="fn">EmitSignal</span>(<span class="cls">SignalName</span>.<span class="pr">Died</span>);
+    }
+}
+
+<span class="cm">// --- GameManager subscribes to Player signals ---</span>
+<span class="kw">public partial class</span> <span class="cls">GameManager</span> : <span class="cls">Node</span>
+{
+    <span class="kw">private</span> <span class="cls">Player</span> <span class="vr">_player</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_player</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Player</span>&gt;(<span class="str">"%Player"</span>);
+
+        <span class="cm">// Connect signal to local method</span>
+        <span class="vr">_player</span>.<span class="pr">HealthChanged</span> += <span class="fn">OnHealthChanged</span>;
+        <span class="vr">_player</span>.<span class="pr">Died</span>          += <span class="fn">OnPlayerDied</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_ExitTree</span>()
+    {
+        <span class="cm">// Always disconnect when leaving the tree to prevent leaks</span>
+        <span class="kw">if</span> (<span class="cls">IsInstanceValid</span>(<span class="vr">_player</span>))
+        {
+            <span class="vr">_player</span>.<span class="pr">HealthChanged</span> -= <span class="fn">OnHealthChanged</span>;
+            <span class="vr">_player</span>.<span class="pr">Died</span>          -= <span class="fn">OnPlayerDied</span>;
+        }
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnHealthChanged</span>(<span class="kw">float</span> <span class="vr">current</span>, <span class="kw">float</span> <span class="vr">max</span>)
+    {
+        <span class="fn">GetNode</span>&lt;<span class="cls">HUD</span>&gt;(<span class="str">"%HUD"</span>).<span class="fn">SetHealth</span>(<span class="vr">current</span>, <span class="vr">max</span>);
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnPlayerDied</span>() =&gt; <span class="fn">ShowGameOver</span>();
+}</pre></div>
+  </div>
+
+  <h2>Global EventBus Autoload</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">EventBus.cs (autoload singleton)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="cm">/// Global event bus — add as autoload in Project Settings.
+/// Any node can emit or subscribe without direct references.</span>
+<span class="kw">public partial class</span> <span class="cls">EventBus</span> : <span class="cls">Node</span>
+{
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">EnemyKilledEventHandler</span>(<span class="kw">int</span> <span class="vr">points</span>);
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">LevelCompleteEventHandler</span>(<span class="kw">int</span> <span class="vr">levelIndex</span>);
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">ItemCollectedEventHandler</span>(<span class="cls">StringName</span> <span class="vr">itemId</span>, <span class="cls">Vector3</span> <span class="vr">pos</span>);
+
+    <span class="cm">// Convenience accessor</span>
+    <span class="kw">public static</span> <span class="cls">EventBus</span> <span class="fn">Get</span>(<span class="cls">Node</span> <span class="vr">node</span>) =&gt;
+        <span class="vr">node</span>.<span class="fn">GetNode</span>&lt;<span class="cls">EventBus</span>&gt;(<span class="str">"/root/EventBus"</span>);
+}
+
+<span class="cm">// Usage: emitting from an enemy:</span>
+<span class="cm">// EventBus.Get(this).EmitSignal(EventBus.SignalName.EnemyKilled, 100);</span>
+
+<span class="cm">// Usage: subscribing from the HUD:</span>
+<span class="cm">// EventBus.Get(this).EnemyKilled += OnEnemyKilled;</span></pre></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-ico">&#x26A0;&#xFE0F;</span>
+    <div><strong>Disconnect in _ExitTree()</strong> &mdash; if a subscribed node is freed before the emitter, Godot will attempt to call a method on a dead object. Always unsubscribe lambda-based connections using stored delegates, or use <code>Connect(..., ConnectFlags.OneShot)</code> for single-fire events.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">When should you disconnect signals to prevent memory leaks in Godot 4 C#?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qSig')"><span class="quiz-key">A</span> _Ready()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qSig')"><span class="quiz-key">B</span> _Process()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qSig')"><span class="quiz-key">C</span> _ExitTree()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qSig')"><span class="quiz-key">D</span> Never needed in Godot 4</div>
+    </div>
+    <div class="quiz-fb" id="qSig"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 8 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Enemy AI &amp; Behavior &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 8: Enemy AI & Behavior -->
+<div class="lesson" id="l8">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">09</span>
+      <span class="lesson-cat-badge tag-ai">AI</span>
+    </div>
+    <h1 class="lesson-h1">Enemy AI &amp; Behavior</h1>
+    <p class="lesson-lead">Build a Finite State Machine enemy with Idle, Patrol, Chase, Attack, and Dead states powered by NavigationAgent3D for real pathfinding.</p>
+  </div>
+
+  <h2>Enemy FSM State Diagram</h2>
+  <div class="svg-wrap">
+    <div class="svg-wrap-title">Enemy Finite State Machine</div>
+    <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#0a0c12;border-radius:8px;">
+      <defs>
+        <marker id="arrAI" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#3d8ef0"/>
+        </marker>
+        <marker id="arrAIr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ef4444"/>
+        </marker>
+        <marker id="arrAIg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/>
+        </marker>
+        <marker id="arrAIo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#f5a623"/>
+        </marker>
+      </defs>
+      <!-- IDLE -->
+      <rect x="20" y="85" width="100" height="44" rx="8" fill="rgba(61,142,240,0.15)" stroke="#3d8ef0" stroke-width="2"/>
+      <text x="70" y="112" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">IDLE</text>
+      <!-- PATROL -->
+      <rect x="170" y="85" width="100" height="44" rx="8" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="2"/>
+      <text x="220" y="112" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">PATROL</text>
+      <!-- CHASE -->
+      <rect x="320" y="85" width="100" height="44" rx="8" fill="rgba(245,166,35,0.12)" stroke="#f5a623" stroke-width="2"/>
+      <text x="370" y="112" text-anchor="middle" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">CHASE</text>
+      <!-- ATTACK -->
+      <rect x="470" y="85" width="100" height="44" rx="8" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+      <text x="520" y="112" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">ATTACK</text>
+      <!-- DEAD -->
+      <rect x="295" y="165" width="100" height="40" rx="8" fill="rgba(100,100,100,0.15)" stroke="#666" stroke-width="2"/>
+      <text x="345" y="190" text-anchor="middle" fill="#888" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">DEAD</text>
+      <!-- Arrows -->
+      <line x1="120" y1="107" x2="167" y2="107" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrAI)"/>
+      <line x1="170" y1="115" x2="123" y2="115" stroke="#00e5c0" stroke-width="1.5" marker-end="url(#arrAIg)"/>
+      <line x1="270" y1="107" x2="317" y2="107" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrAIo)"/>
+      <line x1="320" y1="115" x2="273" y2="115" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrAI)"/>
+      <line x1="420" y1="107" x2="467" y2="107" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrAIr)"/>
+      <line x1="470" y1="115" x2="423" y2="115" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrAIo)"/>
+      <!-- Death arrows from CHASE and ATTACK -->
+      <path d="M370,129 L345,163" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#arrAIg)"/>
+      <path d="M520,129 Q520,155 395,165" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#arrAIg)"/>
+      <!-- Labels -->
+      <text x="145" y="100" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="8">idle_time</text>
+      <text x="295" y="100" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="8">&lt;15m</text>
+      <text x="295" y="122" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="8">&gt;20m</text>
+      <text x="445" y="100" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="8">&lt;2m</text>
+      <text x="445" y="122" text-anchor="middle" fill="#aaa" font-family="IBM Plex Mono,monospace" font-size="8">&gt;3m</text>
+      <text x="395" y="152" text-anchor="middle" fill="#666" font-family="IBM Plex Mono,monospace" font-size="8">hp=0</text>
+    </svg>
+  </div>
+
+  <h2>Enemy Scene Tree</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">Enemy (CharacterBody3D)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; CollisionShape3D (CapsuleShape3D)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; MeshInstance3D (EnemyMesh)</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; NavigationAgent3D</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; AnimationTree</div>
+    <div class="sn" style="padding-left:1rem">&#x251C;&#x2500;&#x2500; Area3D (DetectionRadius)</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; CollisionShape3D (SphereShape3D r=15)</div>
+    <div class="sn" style="padding-left:1rem">&#x2514;&#x2500;&#x2500; Area3D (AttackRange)</div>
+    <div class="sn" style="padding-left:2rem">&#x2514;&#x2500;&#x2500; CollisionShape3D (SphereShape3D r=2)</div>
+  </div>
+
+  <h2>Enemy FSM with NavigationAgent3D</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">Enemy.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">Enemy</span> : <span class="cls">CharacterBody3D</span>
+{
+    <span class="kw">public enum</span> <span class="cls">State</span> { <span class="pr">Idle</span>, <span class="pr">Patrol</span>, <span class="pr">Chase</span>, <span class="pr">Attack</span>, <span class="pr">Dead</span> }
+
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">MoveSpeed</span>    = <span class="nm">3.5f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">ChaseRange</span>   = <span class="nm">15f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">AttackRange</span>  = <span class="nm">2f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">AttackDamage</span> = <span class="nm">15f</span>;
+    [<span class="at">Export</span>] <span class="kw">public float</span> <span class="vr">MaxHealth</span>    = <span class="nm">80f</span>;
+
+    <span class="kw">private</span> <span class="cls">State</span>              <span class="vr">_state</span>  = <span class="cls">State</span>.<span class="pr">Idle</span>;
+    <span class="kw">private float</span>              <span class="vr">_hp</span>;
+    <span class="kw">private</span> <span class="cls">NavigationAgent3D</span>  <span class="vr">_nav</span>;
+    <span class="kw">private</span> <span class="cls">Node3D</span>             <span class="vr">_player</span>;
+    <span class="kw">private float</span>              <span class="vr">_attackCooldown</span> = <span class="nm">0f</span>;
+    <span class="kw">private const float</span>        <span class="vr">AttackRate</span>      = <span class="nm">1.5f</span>;
+    <span class="kw">private const float</span>        <span class="vr">Gravity</span>         = <span class="nm">9.8f</span> * <span class="nm">2f</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_hp</span>     = <span class="vr">MaxHealth</span>;
+        <span class="vr">_nav</span>    = <span class="fn">GetNode</span>&lt;<span class="cls">NavigationAgent3D</span>&gt;(<span class="str">"NavigationAgent3D"</span>);
+        <span class="vr">_player</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Node3D</span>&gt;(<span class="str">"/root/World/Player"</span>);
+
+        <span class="vr">_nav</span>.<span class="pr">PathDesiredDistance</span>  = <span class="nm">0.5f</span>;
+        <span class="vr">_nav</span>.<span class="pr">TargetDesiredDistance</span> = <span class="nm">1.0f</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_PhysicsProcess</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="kw">float</span> <span class="vr">dt</span>   = (<span class="kw">float</span>)<span class="vr">delta</span>;
+        <span class="kw">float</span> <span class="vr">dist</span> = <span class="cls">GlobalPosition</span>.<span class="fn">DistanceTo</span>(<span class="vr">_player</span>.<span class="pr">GlobalPosition</span>);
+
+        <span class="cm">// Apply gravity</span>
+        <span class="kw">var</span> <span class="vr">vel</span> = <span class="cls">Velocity</span>;
+        <span class="kw">if</span> (!<span class="fn">IsOnFloor</span>()) <span class="vr">vel</span>.<span class="pr">Y</span> -= <span class="vr">Gravity</span> * <span class="vr">dt</span>;
+
+        <span class="vr">_attackCooldown</span> -= <span class="vr">dt</span>;
+
+        <span class="kw">switch</span> (<span class="vr">_state</span>)
+        {
+            <span class="kw">case</span> <span class="cls">State</span>.<span class="pr">Idle</span>:
+                <span class="kw">if</span> (<span class="vr">dist</span> &lt; <span class="vr">ChaseRange</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Chase</span>);
+                <span class="kw">break</span>;
+
+            <span class="kw">case</span> <span class="cls">State</span>.<span class="pr">Chase</span>:
+                <span class="vr">_nav</span>.<span class="pr">TargetPosition</span> = <span class="vr">_player</span>.<span class="pr">GlobalPosition</span>;
+                <span class="kw">if</span> (!<span class="vr">_nav</span>.<span class="fn">IsNavigationFinished</span>())
+                {
+                    <span class="cls">Vector3</span> <span class="vr">next</span> = <span class="vr">_nav</span>.<span class="fn">GetNextPathPosition</span>();
+                    <span class="cls">Vector3</span> <span class="vr">dir</span>  = (<span class="vr">next</span> - <span class="cls">GlobalPosition</span>).<span class="fn">Normalized</span>();
+                    <span class="vr">vel</span>.<span class="pr">X</span> = <span class="vr">dir</span>.<span class="pr">X</span> * <span class="vr">MoveSpeed</span>;
+                    <span class="vr">vel</span>.<span class="pr">Z</span> = <span class="vr">dir</span>.<span class="pr">Z</span> * <span class="vr">MoveSpeed</span>;
+                    <span class="fn">LookAt</span>(<span class="vr">_player</span>.<span class="pr">GlobalPosition</span> * <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">1</span>,<span class="nm">0</span>,<span class="nm">1</span>) + <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">0</span>,<span class="pr">GlobalPosition</span>.<span class="pr">Y</span>,<span class="nm">0</span>), <span class="cls">Vector3</span>.<span class="pr">Up</span>);
+                }
+                <span class="kw">if</span> (<span class="vr">dist</span> &lt; <span class="vr">AttackRange</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Attack</span>);
+                <span class="kw">if</span> (<span class="vr">dist</span> &gt; <span class="vr">ChaseRange</span> * <span class="nm">1.5f</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Idle</span>);
+                <span class="kw">break</span>;
+
+            <span class="kw">case</span> <span class="cls">State</span>.<span class="pr">Attack</span>:
+                <span class="vr">vel</span>.<span class="pr">X</span> = <span class="nm">0f</span>; <span class="vr">vel</span>.<span class="pr">Z</span> = <span class="nm">0f</span>;
+                <span class="kw">if</span> (<span class="vr">_attackCooldown</span> &lt;= <span class="nm">0f</span>)
+                {
+                    <span class="vr">_attackCooldown</span> = <span class="vr">AttackRate</span>;
+                    (<span class="vr">_player</span> <span class="kw">as</span> <span class="cls">Player</span>)?.<span class="fn">TakeDamage</span>(<span class="vr">AttackDamage</span>);
+                }
+                <span class="kw">if</span> (<span class="vr">dist</span> &gt; <span class="vr">AttackRange</span> * <span class="nm">1.5f</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Chase</span>);
+                <span class="kw">break</span>;
+        }
+
+        <span class="cls">Velocity</span> = <span class="vr">vel</span>;
+        <span class="kw">if</span> (<span class="vr">_state</span> != <span class="cls">State</span>.<span class="pr">Dead</span>) <span class="fn">MoveAndSlide</span>();
+    }
+
+    <span class="kw">public void</span> <span class="fn">TakeDamage</span>(<span class="kw">float</span> <span class="vr">amount</span>)
+    {
+        <span class="kw">if</span> (<span class="vr">_state</span> == <span class="cls">State</span>.<span class="pr">Dead</span>) <span class="kw">return</span>;
+        <span class="vr">_hp</span> -= <span class="vr">amount</span>;
+        <span class="kw">if</span> (<span class="vr">_hp</span> &lt;= <span class="nm">0f</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Dead</span>);
+        <span class="kw">else if</span> (<span class="vr">_state</span> == <span class="cls">State</span>.<span class="pr">Idle</span>) <span class="fn">SetState</span>(<span class="cls">State</span>.<span class="pr">Chase</span>);
+    }
+
+    <span class="kw">private void</span> <span class="fn">SetState</span>(<span class="cls">State</span> <span class="vr">next</span>)
+    {
+        <span class="vr">_state</span> = <span class="vr">next</span>;
+        <span class="kw">if</span> (<span class="vr">next</span> == <span class="cls">State</span>.<span class="pr">Dead</span>)
+        {
+            <span class="cm">// Play death anim and queue free after delay</span>
+            <span class="fn">GetTree</span>().<span class="fn">CreateTimer</span>(<span class="nm">2.0f</span>).<span class="pr">Timeout</span> += <span class="fn">QueueFree</span>;
+        }
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F5FA;&#xFE0F;</span>
+    <div><strong>NavigationRegion3D</strong> &mdash; you must bake a <code>NavigationRegion3D</code> in your level scene for pathfinding to work. Add it as a child of your world, assign a <code>NavigationMesh</code>, and click <strong>Bake NavigationMesh</strong> in the editor toolbar. The agent needs this baked mesh to calculate paths.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What node handles 3D pathfinding navigation for an AI agent?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qAI')"><span class="quiz-key">A</span> PathFinder3D</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAI')"><span class="quiz-key">B</span> NavMesh3D</div>
+      <div class="quiz-o" onclick="qz(this,true,'qAI')"><span class="quiz-key">C</span> NavigationAgent3D</div>
+      <div class="quiz-o" onclick="qz(this,false,'qAI')"><span class="quiz-key">D</span> AIAgent3D</div>
+    </div>
+    <div class="quiz-fb" id="qAI"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 9 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Save &amp; Load System &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 9: Save & Load System -->
+<div class="lesson" id="l9">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">10</span>
+      <span class="lesson-cat-badge tag-sys">Data</span>
+    </div>
+    <h1 class="lesson-h1">Save &amp; Load System</h1>
+    <p class="lesson-lead">Persist game progress with a JSON-based save system using C# serialization. Write to the <code>user://</code> directory for cross-platform safe storage.</p>
+  </div>
+
+  <h2>Save Manager + Data Class</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">SaveManager.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+<span class="kw">using</span> <span class="cls">System</span>.<span class="cls">Collections</span>.<span class="cls">Generic</span>;
+<span class="kw">using</span> <span class="cls">System</span>.<span class="cls">Text</span>.<span class="cls">Json</span>;
+<span class="kw">using</span> <span class="cls">System</span>.<span class="cls">Text</span>.<span class="cls">Json</span>.<span class="cls">Serialization</span>;
+
+<span class="cm">/// Data transferred to/from disk</span>
+<span class="kw">public class</span> <span class="cls">SaveData</span>
+{
+    <span class="kw">public int</span>    <span class="pr">Level</span>       { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="nm">1</span>;
+    <span class="kw">public int</span>    <span class="pr">Score</span>       { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="nm">0</span>;
+    <span class="kw">public float</span>  <span class="pr">Health</span>      { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="nm">100f</span>;
+    <span class="kw">public float</span>  <span class="pr">PlayTimeS</span>   { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="nm">0f</span>;
+    <span class="kw">public</span> <span class="cls">List</span>&lt;<span class="kw">string</span>&gt; <span class="pr">Inventory</span> { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="kw">new</span>();
+    <span class="kw">public</span> <span class="cls">Dictionary</span>&lt;<span class="kw">string</span>, <span class="kw">bool</span>&gt; <span class="pr">Flags</span> { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="kw">new</span>();
+}
+
+<span class="kw">public partial class</span> <span class="cls">SaveManager</span> : <span class="cls">Node</span>
+{
+    <span class="kw">private const string</span> <span class="vr">SavePath</span> = <span class="str">"user://savegame.json"</span>;
+
+    <span class="kw">private static readonly</span> <span class="cls">JsonSerializerOptions</span> <span class="vr">JsonOpts</span> = <span class="kw">new</span>()
+    {
+        <span class="pr">WriteIndented</span> = <span class="kw">true</span>,
+        <span class="pr">DefaultIgnoreCondition</span> = <span class="cls">JsonIgnoreCondition</span>.<span class="pr">WhenWritingNull</span>
+    };
+
+    <span class="kw">public void</span> <span class="fn">Save</span>(<span class="cls">SaveData</span> <span class="vr">data</span>)
+    {
+        <span class="kw">string</span> <span class="vr">json</span> = <span class="cls">JsonSerializer</span>.<span class="fn">Serialize</span>(<span class="vr">data</span>, <span class="vr">JsonOpts</span>);
+
+        <span class="cm">// user:// resolves to the OS-appropriate writable directory</span>
+        <span class="kw">using var</span> <span class="vr">file</span> = <span class="cls">FileAccess</span>.<span class="fn">Open</span>(<span class="vr">SavePath</span>, <span class="cls">FileAccess</span>.<span class="cls">ModeFlags</span>.<span class="pr">Write</span>);
+        <span class="vr">file</span>.<span class="fn">StoreString</span>(<span class="vr">json</span>);
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"Game saved to: "</span>, <span class="cls">ProjectSettings</span>.<span class="fn">GlobalizePath</span>(<span class="vr">SavePath</span>));
+    }
+
+    <span class="kw">public</span> <span class="cls">SaveData</span> <span class="fn">Load</span>()
+    {
+        <span class="kw">if</span> (!<span class="cls">FileAccess</span>.<span class="fn">FileExists</span>(<span class="vr">SavePath</span>))
+        {
+            <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"No save file found, returning defaults."</span>);
+            <span class="kw">return new</span> <span class="cls">SaveData</span>();
+        }
+
+        <span class="kw">using var</span> <span class="vr">file</span> = <span class="cls">FileAccess</span>.<span class="fn">Open</span>(<span class="vr">SavePath</span>, <span class="cls">FileAccess</span>.<span class="cls">ModeFlags</span>.<span class="pr">Read</span>);
+        <span class="kw">string</span> <span class="vr">json</span> = <span class="vr">file</span>.<span class="fn">GetAsText</span>();
+        <span class="kw">return</span> <span class="cls">JsonSerializer</span>.<span class="fn">Deserialize</span>&lt;<span class="cls">SaveData</span>&gt;(<span class="vr">json</span>) ?? <span class="kw">new</span> <span class="cls">SaveData</span>();
+    }
+
+    <span class="kw">public void</span> <span class="fn">Delete</span>()
+    {
+        <span class="kw">if</span> (<span class="cls">FileAccess</span>.<span class="fn">FileExists</span>(<span class="vr">SavePath</span>))
+            <span class="cls">DirAccess</span>.<span class="fn">RemoveAbsolute</span>(<span class="cls">ProjectSettings</span>.<span class="fn">GlobalizePath</span>(<span class="vr">SavePath</span>));
+    }
+
+    <span class="kw">public static</span> <span class="cls">SaveManager</span> <span class="fn">Get</span>(<span class="cls">Node</span> <span class="vr">n</span>) =&gt;
+        <span class="vr">n</span>.<span class="fn">GetNode</span>&lt;<span class="cls">SaveManager</span>&gt;(<span class="str">"/root/SaveManager"</span>);
+}</pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F4C2;</span>
+    <div><strong>user:// path</strong> &mdash; Godot resolves <code>user://</code> to a platform-specific writable folder: <code>%APPDATA%/Godot/app_userdata/&lt;project&gt;/</code> on Windows, <code>~/.local/share/godot/app_userdata/&lt;project&gt;/</code> on Linux. Never write save data to <code>res://</code> in exported games &mdash; it is read-only.</div>
+  </div>
+
+  <h2>Using the Save System</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">GameManager.cs (save usage)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">public override void</span> <span class="fn">_Ready</span>()
+{
+    <span class="kw">var</span> <span class="vr">sm</span>   = <span class="cls">SaveManager</span>.<span class="fn">Get</span>(<span class="kw">this</span>);
+    <span class="kw">var</span> <span class="vr">save</span> = <span class="vr">sm</span>.<span class="fn">Load</span>();
+
+    <span class="cm">// Apply loaded state</span>
+    <span class="vr">_player</span>.<span class="pr">Health</span> = <span class="vr">save</span>.<span class="pr">Health</span>;
+    <span class="vr">_score</span>         = <span class="vr">save</span>.<span class="pr">Score</span>;
+    <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Loaded save: Level {save.Level}, Score {save.Score}"</span>);
+}
+
+<span class="kw">private void</span> <span class="fn">SaveGame</span>()
+{
+    <span class="kw">var</span> <span class="vr">data</span> = <span class="kw">new</span> <span class="cls">SaveData</span>
+    {
+        <span class="pr">Level</span>     = <span class="vr">_currentLevel</span>,
+        <span class="pr">Score</span>     = <span class="vr">_score</span>,
+        <span class="pr">Health</span>    = <span class="vr">_player</span>.<span class="pr">Health</span>,
+        <span class="pr">Inventory</span> = <span class="vr">_player</span>.<span class="pr">Inventory</span>
+    };
+    <span class="cls">SaveManager</span>.<span class="fn">Get</span>(<span class="kw">this</span>).<span class="fn">Save</span>(<span class="vr">data</span>);
+}</pre></div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">Which path prefix should you use for user-writable save data in Godot?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'q2')"><span class="quiz-key">A</span> res://</div>
+      <div class="quiz-o" onclick="qz(this,true,'q2')"><span class="quiz-key">B</span> user://</div>
+      <div class="quiz-o" onclick="qz(this,false,'q2')"><span class="quiz-key">C</span> local://</div>
+      <div class="quiz-o" onclick="qz(this,false,'q2')"><span class="quiz-key">D</span> data://</div>
+    </div>
+    <div class="quiz-fb" id="q2"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 10 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Scene Management &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 10: Scene Management -->
+<div class="lesson" id="l10">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">11</span>
+      <span class="lesson-cat-badge tag-sys">Scenes</span>
+    </div>
+    <h1 class="lesson-h1">Scene Management</h1>
+    <p class="lesson-lead">Load scenes asynchronously in the background with ResourceLoader so your game never freezes during transitions, complete with a progress bar HUD.</p>
+  </div>
+
+  <h2>Async Scene Loading with Progress</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">SceneManager.cs (autoload)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+<span class="kw">using</span> <span class="cls">System</span>.<span class="cls">Collections</span>.<span class="cls">Generic</span>;
+
+<span class="kw">public partial class</span> <span class="cls">SceneManager</span> : <span class="cls">CanvasLayer</span>
+{
+    [<span class="at">Signal</span>] <span class="kw">public delegate void</span> <span class="fn">SceneLoadedEventHandler</span>();
+
+    <span class="kw">private</span> <span class="cls">ProgressBar</span> <span class="vr">_bar</span>;
+    <span class="kw">private</span> <span class="cls">Control</span>     <span class="vr">_overlay</span>;
+    <span class="kw">private string</span>      <span class="vr">_pending</span>   = <span class="str">""</span>;
+    <span class="kw">private bool</span>        <span class="vr">_loading</span>   = <span class="kw">false</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="pr">Layer</span>    = <span class="nm">100</span>; <span class="cm">// render above everything</span>
+        <span class="vr">_bar</span>     = <span class="fn">GetNode</span>&lt;<span class="cls">ProgressBar</span>&gt;(<span class="str">"%LoadBar"</span>);
+        <span class="vr">_overlay</span> = <span class="fn">GetNode</span>&lt;<span class="cls">Control</span>&gt;(<span class="str">"%Overlay"</span>);
+        <span class="vr">_overlay</span>.<span class="pr">Visible</span> = <span class="kw">false</span>;
+    }
+
+    <span class="cm">/// Begin background loading of a scene path</span>
+    <span class="kw">public void</span> <span class="fn">GoTo</span>(<span class="kw">string</span> <span class="vr">scenePath</span>)
+    {
+        <span class="kw">if</span> (<span class="vr">_loading</span>) <span class="kw">return</span>;
+        <span class="vr">_pending</span> = <span class="vr">scenePath</span>;
+        <span class="vr">_loading</span> = <span class="kw">true</span>;
+
+        <span class="vr">_overlay</span>.<span class="pr">Visible</span> = <span class="kw">true</span>;
+        <span class="vr">_bar</span>.<span class="pr">Value</span> = <span class="nm">0</span>;
+
+        <span class="cm">// Non-blocking background load request</span>
+        <span class="cls">ResourceLoader</span>.<span class="fn">LoadThreadedRequest</span>(<span class="vr">scenePath</span>);
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_Process</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="kw">if</span> (!<span class="vr">_loading</span>) <span class="kw">return</span>;
+
+        <span class="kw">var</span> <span class="vr">progress</span> = <span class="kw">new</span> <span class="cls">Godot</span>.<span class="cls">Collections</span>.<span class="cls">Array</span>();
+        <span class="kw">var</span> <span class="vr">status</span> = <span class="cls">ResourceLoader</span>.<span class="fn">LoadThreadedGetStatus</span>(<span class="vr">_pending</span>, <span class="vr">progress</span>);
+
+        <span class="kw">if</span> (<span class="vr">progress</span>.<span class="pr">Count</span> &gt; <span class="nm">0</span>)
+            <span class="vr">_bar</span>.<span class="pr">Value</span> = (<span class="kw">float</span>)<span class="vr">progress</span>[<span class="nm">0</span>] * <span class="nm">100f</span>;
+
+        <span class="kw">if</span> (<span class="vr">status</span> == <span class="cls">ResourceLoader</span>.<span class="cls">ThreadLoadStatus</span>.<span class="pr">Loaded</span>)
+        {
+            <span class="kw">var</span> <span class="vr">scene</span> = (<span class="cls">PackedScene</span>)<span class="cls">ResourceLoader</span>.<span class="fn">LoadThreadedGet</span>(<span class="vr">_pending</span>);
+            <span class="vr">_loading</span> = <span class="kw">false</span>;
+            <span class="vr">_overlay</span>.<span class="pr">Visible</span> = <span class="kw">false</span>;
+            <span class="fn">GetTree</span>().<span class="fn">ChangeSceneToPacked</span>(<span class="vr">scene</span>);
+            <span class="fn">EmitSignal</span>(<span class="cls">SignalName</span>.<span class="pr">SceneLoaded</span>);
+        }
+    }
+
+    <span class="kw">public static</span> <span class="cls">SceneManager</span> <span class="fn">Get</span>(<span class="cls">Node</span> <span class="vr">n</span>) =&gt;
+        <span class="vr">n</span>.<span class="fn">GetNode</span>&lt;<span class="cls">SceneManager</span>&gt;(<span class="str">"/root/SceneManager"</span>);
+}</pre></div>
+  </div>
+
+  <h2>Additive Scene Loading</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">AdditiveScenes.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="cm">// Load a scene additively (both scenes run simultaneously)</span>
+<span class="kw">var</span> <span class="vr">chunk</span> = <span class="cls">GD</span>.<span class="fn">Load</span>&lt;<span class="cls">PackedScene</span>&gt;(<span class="str">"res://scenes/levels/chunk_01.tscn"</span>);
+<span class="kw">var</span> <span class="vr">instance</span> = <span class="vr">chunk</span>.<span class="fn">Instantiate</span>&lt;<span class="cls">Node3D</span>&gt;();
+<span class="vr">instance</span>.<span class="pr">GlobalPosition</span> = <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">64f</span>, <span class="nm">0f</span>, <span class="nm">0f</span>);
+<span class="fn">GetTree</span>().<span class="pr">CurrentScene</span>.<span class="fn">AddChild</span>(<span class="vr">instance</span>);
+
+<span class="cm">// Unload it later:</span>
+<span class="vr">instance</span>.<span class="fn">QueueFree</span>();
+
+<span class="cm">// For open worlds: stream chunks in/out based on player position</span>
+<span class="cm">// using a WorldMap that tracks loaded chunk instances.</span></pre></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F4A1;</span>
+    <div><strong>ResourceLoader.LoadThreadedRequest()</strong> loads assets on a background thread so the main thread (and your game loop) never freezes. Poll with <code>LoadThreadedGetStatus()</code> each frame and swap the scene only when status is <code>Loaded</code>.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">Which method initiates a non-blocking background scene load in Godot 4?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qScene')"><span class="quiz-key">A</span> LoadScene()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qScene')"><span class="quiz-key">B</span> ResourceLoader.LoadThreadedRequest()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qScene')"><span class="quiz-key">C</span> AsyncLoad()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qScene')"><span class="quiz-key">D</span> BackgroundLoad()</div>
+    </div>
+    <div class="quiz-fb" id="qScene"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 11 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Final Project &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 11: Final Project -->
+<div class="lesson" id="l11">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">12</span>
+      <span class="lesson-cat-badge tag-3d">&#x1F3C6; Final</span>
+    </div>
+    <h1 class="lesson-h1">Final Project</h1>
+    <p class="lesson-lead">Bring it all together: a full 3D game with player movement, enemy AI, HUD, saves, audio, and scene transitions all wired through a central GameManager.</p>
+  </div>
+
+  <div class="finish-banner">
+    <div class="fb-ico">&#x1F389;</div>
+    <div>
+      <div class="fb-h">Foundation Complete!</div>
+      <div class="fb-p">You have mastered the core Godot 4 C# 3D systems. Continue to lessons 13&#8211;17 for VFX, shaders, multiplayer, export, and testing.</div>
+    </div>
+  </div>
+
+  <h2>Full Project Architecture</h2>
+  <div class="scene-tree">
+    <div class="scene-tree-title">res:// Project Root</div>
+    <div class="sn" style="padding-left:1rem">&#x1F4C1; autoloads/</div>
+    <div class="sn" style="padding-left:2rem">&#x1F4C4; GameManager.cs <span style="color:var(--text3)">&#x2190; orchestrator</span></div>
+    <div class="sn" style="padding-left:2rem">&#x1F4C4; AudioManager.cs</div>
+    <div class="sn" style="padding-left:2rem">&#x1F4C4; SaveManager.cs</div>
+    <div class="sn" style="padding-left:2rem">&#x1F4C4; SceneManager.cs</div>
+    <div class="sn" style="padding-left:2rem">&#x1F4C4; EventBus.cs</div>
+    <div class="sn" style="padding-left:1rem">&#x1F4C1; scenes/levels/</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; World.tscn</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; MainMenu.tscn</div>
+    <div class="sn" style="padding-left:1rem">&#x1F4C1; scenes/characters/</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; Player.tscn</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; Enemy.tscn</div>
+    <div class="sn" style="padding-left:1rem">&#x1F4C1; scenes/ui/</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; HUD.tscn</div>
+    <div class="sn" style="padding-left:2rem">&#x1F3AD; PauseMenu.tscn</div>
+  </div>
+
+  <h2>GameManager Orchestrator</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">GameManager.cs (autoload)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">GameManager</span> : <span class="cls">Node</span>
+{
+    <span class="kw">public int</span>   <span class="pr">Score</span>    { <span class="kw">get</span>; <span class="kw">private set</span>; }
+    <span class="kw">public int</span>   <span class="pr">Level</span>    { <span class="kw">get</span>; <span class="kw">private set</span>; } = <span class="nm">1</span>;
+    <span class="kw">public bool</span>  <span class="pr">GameOver</span> { <span class="kw">get</span>; <span class="kw">private set</span>; }
+
+    <span class="kw">private</span> <span class="cls">SaveManager</span>  <span class="vr">_save</span>;
+    <span class="kw">private</span> <span class="cls">AudioManager</span> <span class="vr">_audio</span>;
+    <span class="kw">private</span> <span class="cls">SceneManager</span> <span class="vr">_scenes</span>;
+    <span class="kw">private</span> <span class="cls">EventBus</span>     <span class="vr">_bus</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_save</span>   = <span class="cls">SaveManager</span>.<span class="fn">Get</span>(<span class="kw">this</span>);
+        <span class="vr">_audio</span>  = <span class="cls">AudioManager</span>.<span class="fn">Instance</span>(<span class="kw">this</span>);
+        <span class="vr">_scenes</span> = <span class="cls">SceneManager</span>.<span class="fn">Get</span>(<span class="kw">this</span>);
+        <span class="vr">_bus</span>    = <span class="cls">EventBus</span>.<span class="fn">Get</span>(<span class="kw">this</span>);
+
+        <span class="cm">// Subscribe to global events</span>
+        <span class="vr">_bus</span>.<span class="pr">EnemyKilled</span>   += <span class="vr">pts</span> =&gt; <span class="fn">AddScore</span>(<span class="vr">pts</span>);
+        <span class="vr">_bus</span>.<span class="pr">LevelComplete</span> += <span class="fn">OnLevelComplete</span>;
+
+        <span class="cm">// Load persisted data</span>
+        <span class="kw">var</span> <span class="vr">data</span> = <span class="vr">_save</span>.<span class="fn">Load</span>();
+        <span class="pr">Level</span> = <span class="vr">data</span>.<span class="pr">Level</span>;
+        <span class="pr">Score</span> = <span class="vr">data</span>.<span class="pr">Score</span>;
+    }
+
+    <span class="kw">private void</span> <span class="fn">AddScore</span>(<span class="kw">int</span> <span class="vr">pts</span>)
+    {
+        <span class="pr">Score</span> += <span class="vr">pts</span>;
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnLevelComplete</span>(<span class="kw">int</span> <span class="vr">idx</span>)
+    {
+        <span class="pr">Level</span>++;
+        <span class="vr">_save</span>.<span class="fn">Save</span>(<span class="kw">new</span> <span class="cls">SaveData</span> { <span class="pr">Level</span> = <span class="pr">Level</span>, <span class="pr">Score</span> = <span class="pr">Score</span> });
+        <span class="vr">_scenes</span>.<span class="fn">GoTo</span>(<span class="str">$"res://scenes/levels/level_{Level:D2}.tscn"</span>);
+    }
+
+    <span class="kw">public void</span> <span class="fn">TriggerGameOver</span>()
+    {
+        <span class="pr">GameOver</span> = <span class="kw">true</span>;
+        <span class="fn">GetTree</span>().<span class="pr">Paused</span> = <span class="kw">true</span>;
+        <span class="vr">_scenes</span>.<span class="fn">GoTo</span>(<span class="str">"res://scenes/ui/GameOver.tscn"</span>);
+    }
+}</pre></div>
+  </div>
+
+  <h2>What to Explore Next</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-ico">&#x2728;</div>
+      <div class="card-title">VFX &amp; Particles (L13)</div>
+      <div class="card-desc">GPUParticles3D, WorldEnvironment post-processing, SSAO, volumetric fog, and glow effects for polished visuals.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F3A8;</div>
+      <div class="card-title">Custom Shaders (L14)</div>
+      <div class="card-desc">Write spatial shaders in Godot Shader Language, create emission/glow effects, and drive parameters from C#.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F310;</div>
+      <div class="card-title">Multiplayer (L15)</div>
+      <div class="card-desc">ENet server/client setup, RPC attribute, MultiplayerSynchronizer, and authority-based movement.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F4E6;</div>
+      <div class="card-title">Export &amp; Deploy (L16)</div>
+      <div class="card-desc">Export templates, AOT compilation for C#, platform-specific flags, and web export CORS setup.</div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F4CB;</span>
+    <div><strong>No quiz this lesson</strong> &mdash; this is a capstone milestone. Review the lesson list in the sidebar and continue to the Advanced section for production-quality techniques.</div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 12 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Continue: VFX &amp; Particles &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 12: Visual Effects & Particles -->
+<div class="lesson" id="l12">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">13</span>
+      <span class="lesson-cat-badge tag-sys">VFX</span>
+    </div>
+    <h1 class="lesson-h1">Visual Effects &amp; Particles</h1>
+    <p class="lesson-lead">Bring your 3D world to life with GPUParticles3D burst and continuous emitters, and set up WorldEnvironment for ambient lighting, fog, SSAO, and bloom post-processing.</p>
+  </div>
+
+  <h2>Particle System Diagram</h2>
+  <div class="svg-wrap">
+    <div class="svg-wrap-title">GPUParticles3D Emission Pattern</div>
+    <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#0a0c12;border-radius:8px;">
+      <defs>
+        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f5a623" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Emitter box -->
+      <rect x="195" y="120" width="90" height="40" rx="8" fill="rgba(61,142,240,0.2)" stroke="#3d8ef0" stroke-width="2"/>
+      <text x="240" y="145" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="700">EMITTER</text>
+      <!-- Glow beneath -->
+      <ellipse cx="240" cy="165" rx="55" ry="12" fill="url(#glow1)" opacity="0.5"/>
+      <!-- Particles - scattered around emitter -->
+      <circle cx="120" cy="80"  r="5" fill="#f5a623" opacity="0.9"/>
+      <circle cx="160" cy="55"  r="4" fill="#ef4444" opacity="0.8"/>
+      <circle cx="200" cy="40"  r="3" fill="#f5a623" opacity="0.6"/>
+      <circle cx="240" cy="30"  r="6" fill="#00e5c0" opacity="0.9"/>
+      <circle cx="280" cy="45"  r="3" fill="#f5a623" opacity="0.7"/>
+      <circle cx="320" cy="62"  r="5" fill="#ef4444" opacity="0.8"/>
+      <circle cx="355" cy="90"  r="4" fill="#00e5c0" opacity="0.6"/>
+      <circle cx="370" cy="130" r="3" fill="#f5a623" opacity="0.5"/>
+      <circle cx="100" cy="130" r="4" fill="#ef4444" opacity="0.6"/>
+      <circle cx="88"  cy="165" r="3" fill="#00e5c0" opacity="0.4"/>
+      <circle cx="385" cy="165" r="3" fill="#f5a623" opacity="0.4"/>
+      <circle cx="145" cy="195" r="4" fill="#ef4444" opacity="0.5"/>
+      <circle cx="335" cy="200" r="3" fill="#00e5c0" opacity="0.5"/>
+      <circle cx="175" cy="215" r="2" fill="#f5a623" opacity="0.3"/>
+      <circle cx="305" cy="215" r="2" fill="#f5a623" opacity="0.3"/>
+      <circle cx="240" cy="225" r="3" fill="#ef4444" opacity="0.4"/>
+      <!-- Velocity lines from emitter -->
+      <line x1="240" y1="120" x2="120" y2="80"  stroke="#f5a623" stroke-width="0.8" opacity="0.3"/>
+      <line x1="240" y1="120" x2="240" y2="30"  stroke="#00e5c0" stroke-width="0.8" opacity="0.3"/>
+      <line x1="240" y1="120" x2="355" y2="90"  stroke="#ef4444" stroke-width="0.8" opacity="0.3"/>
+      <line x1="240" y1="120" x2="385" y2="165" stroke="#f5a623" stroke-width="0.8" opacity="0.3"/>
+      <line x1="240" y1="120" x2="240" y2="225" stroke="#00e5c0" stroke-width="0.8" opacity="0.3"/>
+      <line x1="240" y1="120" x2="88"  cy="165" stroke="#ef4444" stroke-width="0.8" opacity="0.3"/>
+      <!-- Labels -->
+      <text x="240" y="260" text-anchor="middle" fill="#555" font-family="IBM Plex Mono,monospace" font-size="10">particles fade with lifetime (opacity gradient)</text>
+    </svg>
+  </div>
+
+  <h2>GPUParticles3D Properties</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-ico">&#x1F4A5;</div>
+      <div class="card-title">Amount &amp; Lifetime</div>
+      <div class="card-desc"><code>Amount</code> is total particles in the pool. <code>Lifetime</code> is how long each particle lives in seconds. Higher amount = denser effect but more GPU cost.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F300;</div>
+      <div class="card-title">Emission Shape</div>
+      <div class="card-desc">Point, Sphere, Box, Ring, or Mesh surface. Set via the <code>ParticleProcessMaterial.EmissionShape</code> property to control spawn area.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F9EA;</div>
+      <div class="card-title">Process Material</div>
+      <div class="card-desc"><code>ParticleProcessMaterial</code> (for GPU particles) controls velocity, gravity, color ramp, scale curve, and turbulence. All GPU-computed.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x23F1;&#xFE0F;</div>
+      <div class="card-title">One Shot / Burst</div>
+      <div class="card-desc">Enable <code>OneShot</code> for burst effects (explosion, impact). Leave off for looping effects (fire, rain). Use <code>Emitting = true</code> to trigger from code.</div>
+    </div>
+  </div>
+
+  <h2>GPUParticles3D from C#</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">VFXSpawner.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">VFXSpawner</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public</span> <span class="cls">PackedScene</span> <span class="vr">ExplosionVFX</span>;
+
+    <span class="cm">/// Spawn a one-shot particle burst at a world position</span>
+    <span class="kw">public void</span> <span class="fn">SpawnExplosion</span>(<span class="cls">Vector3</span> <span class="vr">worldPos</span>)
+    {
+        <span class="kw">var</span> <span class="vr">instance</span> = <span class="vr">ExplosionVFX</span>.<span class="fn">Instantiate</span>&lt;<span class="cls">GPUParticles3D</span>&gt;();
+        <span class="fn">GetTree</span>().<span class="pr">CurrentScene</span>.<span class="fn">AddChild</span>(<span class="vr">instance</span>);
+        <span class="vr">instance</span>.<span class="pr">GlobalPosition</span> = <span class="vr">worldPos</span>;
+        <span class="vr">instance</span>.<span class="pr">OneShot</span>  = <span class="kw">true</span>;
+        <span class="vr">instance</span>.<span class="pr">Emitting</span> = <span class="kw">true</span>;
+
+        <span class="cm">// Auto-cleanup after particle lifetime expires</span>
+        <span class="kw">float</span> <span class="vr">despawnTime</span> = (<span class="kw">float</span>)<span class="vr">instance</span>.<span class="pr">Lifetime</span> + <span class="nm">0.5f</span>;
+        <span class="fn">GetTree</span>().<span class="fn">CreateTimer</span>(<span class="vr">despawnTime</span>).<span class="pr">Timeout</span> += <span class="vr">instance</span>.<span class="fn">QueueFree</span>;
+    }
+
+    <span class="cm">/// Configure particles procedurally from code</span>
+    <span class="kw">public static</span> <span class="cls">GPUParticles3D</span> <span class="fn">CreateFireEffect</span>()
+    {
+        <span class="kw">var</span> <span class="vr">mat</span> = <span class="kw">new</span> <span class="cls">ParticleProcessMaterial</span>();
+        <span class="vr">mat</span>.<span class="pr">Direction</span>        = <span class="cls">Vector3</span>.<span class="pr">Up</span>;
+        <span class="vr">mat</span>.<span class="pr">InitialVelocityMin</span> = <span class="nm">1f</span>;
+        <span class="vr">mat</span>.<span class="pr">InitialVelocityMax</span> = <span class="nm">3f</span>;
+        <span class="vr">mat</span>.<span class="pr">Spread</span>            = <span class="nm">30f</span>;
+        <span class="vr">mat</span>.<span class="pr">Gravity</span>           = <span class="kw">new</span> <span class="cls">Vector3</span>(<span class="nm">0f</span>, <span class="nm">-1f</span>, <span class="nm">0f</span>);
+        <span class="vr">mat</span>.<span class="pr">ScaleMin</span>          = <span class="nm">0.2f</span>;
+        <span class="vr">mat</span>.<span class="pr">ScaleMax</span>          = <span class="nm">0.6f</span>;
+
+        <span class="cm">// Color gradient: orange -> red -> transparent</span>
+        <span class="kw">var</span> <span class="vr">grad</span> = <span class="kw">new</span> <span class="cls">Gradient</span>();
+        <span class="vr">grad</span>.<span class="fn">SetColor</span>(<span class="nm">0</span>, <span class="kw">new</span> <span class="cls">Color</span>(<span class="nm">1f</span>, <span class="nm">0.6f</span>, <span class="nm">0f</span>, <span class="nm">1f</span>));
+        <span class="vr">grad</span>.<span class="fn">SetColor</span>(<span class="nm">1</span>, <span class="kw">new</span> <span class="cls">Color</span>(<span class="nm">1f</span>, <span class="nm">0f</span>,   <span class="nm">0f</span>, <span class="nm">0f</span>));
+        <span class="vr">mat</span>.<span class="pr">ColorRamp</span> = <span class="kw">new</span> <span class="cls">GradientTexture1D</span> { <span class="pr">Gradient</span> = <span class="vr">grad</span> };
+
+        <span class="kw">return new</span> <span class="cls">GPUParticles3D</span>
+        {
+            <span class="pr">ProcessMaterial</span> = <span class="vr">mat</span>,
+            <span class="pr">Amount</span>          = <span class="nm">64</span>,
+            <span class="pr">Lifetime</span>        = <span class="nm">1.2f</span>,
+            <span class="pr">Emitting</span>        = <span class="kw">true</span>
+        };
+    }
+}</pre></div>
+  </div>
+
+  <h2>WorldEnvironment Setup</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">EnvironmentSetup.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">EnvironmentSetup</span> : <span class="cls">Node3D</span>
+{
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="kw">var</span> <span class="vr">env</span> = <span class="kw">new</span> <span class="cls">Environment</span>();
+
+        <span class="cm">// Sky</span>
+        <span class="vr">env</span>.<span class="pr">BackgroundMode</span>  = <span class="cls">Environment</span>.<span class="cls">BGMode</span>.<span class="pr">Sky</span>;
+        <span class="vr">env</span>.<span class="pr">Sky</span>             = <span class="kw">new</span> <span class="cls">Sky</span>();
+
+        <span class="cm">// Ambient light</span>
+        <span class="vr">env</span>.<span class="pr">AmbientLightSource</span>    = <span class="cls">Environment</span>.<span class="cls">AmbientSource</span>.<span class="pr">Color</span>;
+        <span class="vr">env</span>.<span class="pr">AmbientLightColor</span>     = <span class="kw">new</span> <span class="cls">Color</span>(<span class="nm">0.1f</span>, <span class="nm">0.12f</span>, <span class="nm">0.18f</span>);
+        <span class="vr">env</span>.<span class="pr">AmbientLightEnergy</span>    = <span class="nm">0.5f</span>;
+
+        <span class="cm">// Fog</span>
+        <span class="vr">env</span>.<span class="pr">FogEnabled</span>      = <span class="kw">true</span>;
+        <span class="vr">env</span>.<span class="pr">FogDensity</span>      = <span class="nm">0.01f</span>;
+        <span class="vr">env</span>.<span class="pr">FogSkyAffect</span>    = <span class="nm">0.5f</span>;
+
+        <span class="cm">// Bloom / Glow</span>
+        <span class="vr">env</span>.<span class="pr">GlowEnabled</span>     = <span class="kw">true</span>;
+        <span class="vr">env</span>.<span class="pr">GlowIntensity</span>   = <span class="nm">0.8f</span>;
+        <span class="vr">env</span>.<span class="pr">GlowBloom</span>       = <span class="nm">0.2f</span>;
+
+        <span class="cm">// SSAO (Screen Space Ambient Occlusion)</span>
+        <span class="vr">env</span>.<span class="pr">SsaoEnabled</span>     = <span class="kw">true</span>;
+        <span class="vr">env</span>.<span class="pr">SsaoRadius</span>      = <span class="nm">1.0f</span>;
+        <span class="vr">env</span>.<span class="pr">SsaoIntensity</span>   = <span class="nm">2.0f</span>;
+
+        <span class="fn">GetNode</span>&lt;<span class="cls">WorldEnvironment</span>&gt;(<span class="str">"WorldEnvironment"</span>).<span class="pr">Environment</span> = <span class="vr">env</span>;
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F4A1;</span>
+    <div><strong>Post-Processing Only on Forward+</strong> &mdash; SSAO, SSR (Screen Space Reflections), volumetric fog, and glow require the Forward+ renderer. They are unavailable or limited on Mobile and Compatibility renderers. Always test on your target platform.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What node creates GPU-accelerated particle effects in Godot 4?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qVFX')"><span class="quiz-key">A</span> CPUParticles3D</div>
+      <div class="quiz-o" onclick="qz(this,false,'qVFX')"><span class="quiz-key">B</span> ParticleSystem</div>
+      <div class="quiz-o" onclick="qz(this,true,'qVFX')"><span class="quiz-key">C</span> GPUParticles3D</div>
+      <div class="quiz-o" onclick="qz(this,false,'qVFX')"><span class="quiz-key">D</span> Emitter3D</div>
+    </div>
+    <div class="quiz-fb" id="qVFX"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 13 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Custom Shaders &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 13: Custom Shaders -->
+<div class="lesson" id="l13">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">14</span>
+      <span class="lesson-cat-badge tag-sys">Shaders</span>
+    </div>
+    <h1 class="lesson-h1">Custom Shaders</h1>
+    <p class="lesson-lead">Write spatial shaders in Godot Shader Language (GLSL-like), create glowing emission and outline effects, and drive shader parameters dynamically from C#.</p>
+  </div>
+
+  <h2>Shader Pipeline Diagram</h2>
+  <div class="svg-wrap">
+    <div class="svg-wrap-title">Godot Rendering Pipeline</div>
+    <svg viewBox="0 0 700 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#0a0c12;border-radius:8px;">
+      <defs>
+        <marker id="arrPipe" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#3d8ef0"/>
+        </marker>
+      </defs>
+      <!-- Boxes -->
+      <rect x="10"  y="32" width="110" height="44" rx="7" fill="rgba(61,142,240,0.15)" stroke="#3d8ef0" stroke-width="1.5"/>
+      <text x="65"  y="52" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">CPU</text>
+      <text x="65"  y="66" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="9">Mesh Data</text>
+
+      <rect x="150" y="32" width="120" height="44" rx="7" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="1.5"/>
+      <text x="210" y="52" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">Vertex</text>
+      <text x="210" y="66" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="9">Shader</text>
+
+      <rect x="300" y="32" width="110" height="44" rx="7" fill="rgba(245,166,35,0.12)" stroke="#f5a623" stroke-width="1.5"/>
+      <text x="355" y="52" text-anchor="middle" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">Rasterize</text>
+      <text x="355" y="66" text-anchor="middle" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="9">triangles</text>
+
+      <rect x="440" y="32" width="120" height="44" rx="7" fill="rgba(239,68,68,0.12)" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="500" y="52" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">Fragment</text>
+      <text x="500" y="66" text-anchor="middle" fill="#ef4444" font-family="IBM Plex Mono,monospace" font-size="9">Shader</text>
+
+      <rect x="590" y="32" width="100" height="44" rx="7" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="1.5"/>
+      <text x="640" y="52" text-anchor="middle" fill="#22c55e" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">Screen</text>
+      <text x="640" y="66" text-anchor="middle" fill="#22c55e" font-family="IBM Plex Mono,monospace" font-size="9">Output</text>
+
+      <!-- Arrows -->
+      <line x1="120" y1="54" x2="147" y2="54" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrPipe)"/>
+      <line x1="270" y1="54" x2="297" y2="54" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrPipe)"/>
+      <line x1="410" y1="54" x2="437" y2="54" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrPipe)"/>
+      <line x1="560" y1="54" x2="587" y2="54" stroke="#3d8ef0" stroke-width="1.5" marker-end="url(#arrPipe)"/>
+
+      <!-- Labels below -->
+      <text x="210" y="95" text-anchor="middle" fill="#555" font-family="IBM Plex Mono,monospace" font-size="8">positions/normals</text>
+      <text x="500" y="95" text-anchor="middle" fill="#555" font-family="IBM Plex Mono,monospace" font-size="8">per-pixel color</text>
+    </svg>
+  </div>
+
+  <h2>Shader Types in Godot</h2>
+  <table>
+    <thead><tr><th>Type</th><th>Use Case</th><th>Functions</th></tr></thead>
+    <tbody>
+      <tr><td><code>spatial</code></td><td>3D world objects (PBR + custom)</td><td>vertex(), fragment(), light()</td></tr>
+      <tr><td><code>canvas_item</code></td><td>2D sprites and UI materials</td><td>vertex(), fragment()</td></tr>
+      <tr><td><code>particles</code></td><td>Custom particle behavior on GPU</td><td>start(), process()</td></tr>
+      <tr><td><code>sky</code></td><td>Procedural sky shaders</td><td>sky()</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Glow / Emission Shader</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">GDShader</span>
+      <span class="cb-file">glow_emission.gdshader</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">shader_type</span> spatial;
+<span class="kw">render_mode</span> unshaded;
+
+<span class="cm">// Uniforms are set from C# via ShaderMaterial.SetShaderParameter()</span>
+<span class="kw">uniform</span> <span class="cls">vec4</span>  <span class="vr">emission_color</span> : source_color = <span class="cls">vec4</span>(<span class="nm">0.0</span>, <span class="nm">0.9</span>, <span class="nm">0.75</span>, <span class="nm">1.0</span>);
+<span class="kw">uniform</span> <span class="kw">float</span> <span class="vr">pulse_speed</span>    = <span class="nm">2.0</span>;
+<span class="kw">uniform</span> <span class="kw">float</span> <span class="vr">pulse_amount</span>   = <span class="nm">0.3</span>;
+<span class="kw">uniform</span> <span class="kw">float</span> <span class="vr">base_emission</span>  = <span class="nm">1.5</span>;
+
+<span class="kw">void</span> <span class="fn">fragment</span>() {
+    <span class="cm">// Pulse brightness using a sine wave on TIME</span>
+    <span class="kw">float</span> <span class="vr">pulse</span> = <span class="nm">1.0</span> + <span class="fn">sin</span>(TIME * <span class="vr">pulse_speed</span>) * <span class="vr">pulse_amount</span>;
+    <span class="pr">EMISSION</span> = <span class="vr">emission_color</span>.rgb * (<span class="vr">base_emission</span> * <span class="vr">pulse</span>);
+    <span class="pr">ALBEDO</span>   = <span class="vr">emission_color</span>.rgb * <span class="nm">0.1</span>; <span class="cm">// slight base color</span>
+    <span class="pr">ALPHA</span>    = <span class="vr">emission_color</span>.a;
+}</pre></div>
+  </div>
+
+  <h2>Outline / Rim Shader</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">GDShader</span>
+      <span class="cb-file">outline_rim.gdshader</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">shader_type</span> spatial;
+<span class="kw">render_mode</span> cull_front, unshaded;
+
+<span class="kw">uniform</span> <span class="cls">vec4</span>  <span class="vr">outline_color</span> : source_color = <span class="cls">vec4</span>(<span class="nm">1.0</span>, <span class="nm">0.4</span>, <span class="nm">0.0</span>, <span class="nm">1.0</span>);
+<span class="kw">uniform</span> <span class="kw">float</span> <span class="vr">outline_width</span> = <span class="nm">0.03</span>;
+
+<span class="kw">void</span> <span class="fn">vertex</span>() {
+    <span class="cm">// Push vertices along their normal to create the outline shell</span>
+    <span class="cls">vec4</span> <span class="vr">pos</span>    = <span class="cls">PROJECTION_MATRIX</span> * <span class="cls">MODELVIEW_MATRIX</span> * <span class="cls">vec4</span>(<span class="cls">VERTEX</span>, <span class="nm">1.0</span>);
+    <span class="cls">vec4</span> <span class="vr">normal</span> = <span class="cls">PROJECTION_MATRIX</span> * <span class="cls">MODELVIEW_MATRIX</span> * <span class="cls">vec4</span>(<span class="cls">NORMAL</span>, <span class="nm">0.0</span>);
+    <span class="cls">vec2</span> <span class="vr">offset</span> = <span class="fn">normalize</span>(<span class="vr">normal</span>.xy) * <span class="vr">outline_width</span> * <span class="vr">pos</span>.w;
+    <span class="cls">POSITION</span> = <span class="vr">pos</span> + <span class="cls">vec4</span>(<span class="vr">offset</span>, <span class="nm">0.0</span>, <span class="nm">0.0</span>);
+}
+
+<span class="kw">void</span> <span class="fn">fragment</span>() {
+    <span class="pr">ALBEDO</span> = <span class="vr">outline_color</span>.rgb;
+}</pre></div>
+  </div>
+
+  <h2>Using ShaderMaterial from C#</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">ShaderUsage.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">GlowObject</span> : <span class="cls">Node3D</span>
+{
+    [<span class="at">Export</span>] <span class="kw">public</span> <span class="cls">Shader</span>     <span class="vr">GlowShader</span>;
+    [<span class="at">Export</span>] <span class="kw">public</span> <span class="cls">Color</span>      <span class="vr">EmissionColor</span> = <span class="kw">new</span> <span class="cls">Color</span>(<span class="nm">0f</span>, <span class="nm">0.9f</span>, <span class="nm">0.75f</span>);
+
+    <span class="kw">private</span> <span class="cls">ShaderMaterial</span>   <span class="vr">_mat</span>;
+    <span class="kw">private</span> <span class="cls">MeshInstance3D</span>   <span class="vr">_mesh</span>;
+
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="vr">_mesh</span> = <span class="fn">GetNode</span>&lt;<span class="cls">MeshInstance3D</span>&gt;(<span class="str">"MeshInstance3D"</span>);
+
+        <span class="cm">// Create ShaderMaterial and assign shader</span>
+        <span class="vr">_mat</span> = <span class="kw">new</span> <span class="cls">ShaderMaterial</span>();
+        <span class="vr">_mat</span>.<span class="pr">Shader</span> = <span class="vr">GlowShader</span>;
+
+        <span class="cm">// Set initial parameter values</span>
+        <span class="vr">_mat</span>.<span class="fn">SetShaderParameter</span>(<span class="str">"emission_color"</span>, <span class="vr">EmissionColor</span>);
+        <span class="vr">_mat</span>.<span class="fn">SetShaderParameter</span>(<span class="str">"pulse_speed"</span>,    <span class="nm">2.0f</span>);
+        <span class="vr">_mat</span>.<span class="fn">SetShaderParameter</span>(<span class="str">"base_emission"</span>,  <span class="nm">1.5f</span>);
+
+        <span class="vr">_mesh</span>.<span class="pr">MaterialOverride</span> = <span class="vr">_mat</span>;
+    }
+
+    <span class="cm">/// Change color at runtime (e.g. on damage)</span>
+    <span class="kw">public void</span> <span class="fn">FlashRed</span>()
+    {
+        <span class="vr">_mat</span>.<span class="fn">SetShaderParameter</span>(<span class="str">"emission_color"</span>, <span class="kw">new</span> <span class="cls">Color</span>(<span class="nm">1f</span>, <span class="nm">0.1f</span>, <span class="nm">0.1f</span>));
+        <span class="fn">GetTree</span>().<span class="fn">CreateTimer</span>(<span class="nm">0.3f</span>).<span class="pr">Timeout</span> += () =&gt;
+            <span class="vr">_mat</span>.<span class="fn">SetShaderParameter</span>(<span class="str">"emission_color"</span>, <span class="vr">EmissionColor</span>);
+    }
+}</pre></div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What function in a Godot spatial shader handles per-pixel color output?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qShader')"><span class="quiz-key">A</span> vertex()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qShader')"><span class="quiz-key">B</span> pixel()</div>
+      <div class="quiz-o" onclick="qz(this,true,'qShader')"><span class="quiz-key">C</span> fragment()</div>
+      <div class="quiz-o" onclick="qz(this,false,'qShader')"><span class="quiz-key">D</span> color()</div>
+    </div>
+    <div class="quiz-fb" id="qShader"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 14 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Multiplayer &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 14: Multiplayer -->
+<div class="lesson" id="l14">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">15</span>
+      <span class="lesson-cat-badge tag-sys">Multiplayer</span>
+    </div>
+    <h1 class="lesson-h1">Multiplayer</h1>
+    <p class="lesson-lead">Build authoritative client-server multiplayer using ENet, the [Rpc] attribute for remote procedure calls, and MultiplayerSynchronizer for automatic state sync.</p>
+  </div>
+
+  <h2>Network Topology Diagram</h2>
+  <div class="svg-wrap">
+    <div class="svg-wrap-title">Server-Client Architecture</div>
+    <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#0a0c12;border-radius:8px;">
+      <defs>
+        <marker id="arrNet" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#3d8ef0"/>
+        </marker>
+        <marker id="arrNetT" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#00e5c0"/>
+        </marker>
+      </defs>
+      <!-- Server center -->
+      <rect x="185" y="125" width="130" height="55" rx="10" fill="rgba(61,142,240,0.2)" stroke="#3d8ef0" stroke-width="2.5"/>
+      <text x="250" y="149" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="700">SERVER</text>
+      <text x="250" y="167" text-anchor="middle" fill="#3d8ef0" font-family="IBM Plex Mono,monospace" font-size="10">Authority</text>
+
+      <!-- Client top-left -->
+      <rect x="30"  y="25"  width="100" height="42" rx="8" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="1.5"/>
+      <text x="80"  y="46" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">Client 1</text>
+      <text x="80"  y="60" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="9">peer id: 1</text>
+
+      <!-- Client top-right -->
+      <rect x="370" y="25"  width="100" height="42" rx="8" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="1.5"/>
+      <text x="420" y="46" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">Client 2</text>
+      <text x="420" y="60" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="9">peer id: 2</text>
+
+      <!-- Client bottom-left -->
+      <rect x="30"  y="240" width="100" height="42" rx="8" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="1.5"/>
+      <text x="80"  y="261" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">Client 3</text>
+      <text x="80"  y="275" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="9">peer id: 3</text>
+
+      <!-- Client bottom-right -->
+      <rect x="370" y="240" width="100" height="42" rx="8" fill="rgba(0,229,192,0.12)" stroke="#00e5c0" stroke-width="1.5"/>
+      <text x="420" y="261" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">Client 4</text>
+      <text x="420" y="275" text-anchor="middle" fill="#00e5c0" font-family="IBM Plex Mono,monospace" font-size="9">peer id: 4</text>
+
+      <!-- Connecting lines (bidirectional) -->
+      <line x1="130" y1="50"  x2="183" y2="135" stroke="#3d8ef0" stroke-width="1.2" stroke-dasharray="5,3"/>
+      <line x1="370" y1="50"  x2="317" y2="135" stroke="#3d8ef0" stroke-width="1.2" stroke-dasharray="5,3"/>
+      <line x1="130" y1="262" x2="183" y2="168" stroke="#3d8ef0" stroke-width="1.2" stroke-dasharray="5,3"/>
+      <line x1="370" y1="262" x2="317" y2="168" stroke="#3d8ef0" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+      <!-- RPC labels -->
+      <text x="148" y="103" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(-28,148,103)">RPC &#x2194;</text>
+      <text x="320" y="90"  fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(28,320,90)">RPC &#x2194;</text>
+      <text x="148" y="210" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(28,148,210)">RPC &#x2194;</text>
+      <text x="320" y="210" fill="#f5a623" font-family="IBM Plex Mono,monospace" font-size="8" transform="rotate(-28,320,210)">RPC &#x2194;</text>
+    </svg>
+  </div>
+
+  <h2>Multiplayer Concepts</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-ico">&#x1F451;</div>
+      <div class="card-title">Authority</div>
+      <div class="card-desc">Each node has one authority peer (default: server = peer 1). Only the authority should write state. Check with <code>IsMultiplayerAuthority()</code>.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F4E1;</div>
+      <div class="card-title">RPC</div>
+      <div class="card-desc">Remote Procedure Call &mdash; invoke a method on a remote peer. Mark methods with <code>[Rpc]</code> attribute. Call via <code>Rpc()</code>, <code>RpcId()</code>, or <code>RpcOnServer()</code>.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F194;</div>
+      <div class="card-title">Peer ID</div>
+      <div class="card-desc">Each connected peer gets a unique integer ID. Server always has ID 1. Get own ID with <code>Multiplayer.GetUniqueId()</code>.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F504;</div>
+      <div class="card-title">Synchronizer</div>
+      <div class="card-desc"><code>MultiplayerSynchronizer</code> automatically replicates node properties from authority to all peers each physics tick. Handles interpolation.</div>
+    </div>
+  </div>
+
+  <h2>Server &amp; Client Setup</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">NetworkManager.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">NetworkManager</span> : <span class="cls">Node</span>
+{
+    <span class="kw">private const int</span> <span class="vr">Port</span>    = <span class="nm">7777</span>;
+    <span class="kw">private const int</span> <span class="vr">MaxPeers</span> = <span class="nm">8</span>;
+
+    <span class="cm">/// Start as dedicated server</span>
+    <span class="kw">public void</span> <span class="fn">StartServer</span>()
+    {
+        <span class="kw">var</span> <span class="vr">peer</span> = <span class="kw">new</span> <span class="cls">ENetMultiplayerPeer</span>();
+        <span class="vr">peer</span>.<span class="fn">CreateServer</span>(<span class="vr">Port</span>, <span class="vr">MaxPeers</span>);
+        <span class="fn">Multiplayer</span>.<span class="pr">MultiplayerPeer</span> = <span class="vr">peer</span>;
+
+        <span class="fn">Multiplayer</span>.<span class="pr">PeerConnected</span>    += <span class="fn">OnPeerConnected</span>;
+        <span class="fn">Multiplayer</span>.<span class="pr">PeerDisconnected</span> += <span class="fn">OnPeerDisconnected</span>;
+
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Server listening on port {Port}"</span>);
+    }
+
+    <span class="cm">/// Connect as client to a server IP</span>
+    <span class="kw">public void</span> <span class="fn">JoinServer</span>(<span class="kw">string</span> <span class="vr">ip</span>)
+    {
+        <span class="kw">var</span> <span class="vr">peer</span> = <span class="kw">new</span> <span class="cls">ENetMultiplayerPeer</span>();
+        <span class="vr">peer</span>.<span class="fn">CreateClient</span>(<span class="vr">ip</span>, <span class="vr">Port</span>);
+        <span class="fn">Multiplayer</span>.<span class="pr">MultiplayerPeer</span> = <span class="vr">peer</span>;
+
+        <span class="fn">Multiplayer</span>.<span class="pr">ConnectedToServer</span> += () =&gt;
+            <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Connected! My peer ID: {Multiplayer.GetUniqueId()}"</span>);
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnPeerConnected</span>(<span class="kw">long</span> <span class="vr">id</span>)
+    {
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Peer {id} joined"</span>);
+        <span class="cm">// Spawn player for this peer</span>
+        <span class="kw">if</span> (<span class="fn">Multiplayer</span>.<span class="fn">IsServer</span>())
+            <span class="fn">RpcId</span>(<span class="vr">id</span>, <span class="cls">MethodName</span>.<span class="pr">SpawnPlayer</span>, <span class="vr">id</span>);
+    }
+
+    <span class="kw">private void</span> <span class="fn">OnPeerDisconnected</span>(<span class="kw">long</span> <span class="vr">id</span>) =&gt;
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Peer {id} left"</span>);
+
+    [<span class="at">Rpc</span>(<span class="cls">MultiplayerApi</span>.<span class="cls">RpcMode</span>.<span class="pr">AnyPeer</span>, <span class="pr">CallLocal</span> = <span class="kw">true</span>)]
+    <span class="kw">private void</span> <span class="fn">SpawnPlayer</span>(<span class="kw">long</span> <span class="vr">peerId</span>)
+    {
+        <span class="cm">// Called on all clients to instantiate the new player</span>
+        <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Spawning player for peer {peerId}"</span>);
+    }
+}</pre></div>
+  </div>
+
+  <h2>RPC Attribute Examples</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">PlayerMP.cs (RPC examples)</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">public partial class</span> <span class="cls">PlayerMP</span> : <span class="cls">CharacterBody3D</span>
+{
+    <span class="cm">// Only the server can call this — updates health on all peers</span>
+    [<span class="at">Rpc</span>(<span class="cls">MultiplayerApi</span>.<span class="cls">RpcMode</span>.<span class="pr">Authority</span>, <span class="pr">CallLocal</span> = <span class="kw">true</span>, <span class="pr">TransferMode</span> = <span class="cls">MultiplayerPeer</span>.<span class="cls">TransferModeEnum</span>.<span class="pr">Reliable</span>)]
+    <span class="kw">public void</span> <span class="fn">SyncHealth</span>(<span class="kw">float</span> <span class="vr">hp</span>)
+    {
+        <span class="vr">_health</span> = <span class="vr">hp</span>;
+        <span class="fn">EmitSignal</span>(<span class="cls">SignalName</span>.<span class="pr">HealthChanged</span>, <span class="vr">hp</span>, <span class="vr">_maxHealth</span>);
+    }
+
+    <span class="cm">// Any peer can call this — client sends input to server</span>
+    [<span class="at">Rpc</span>(<span class="cls">MultiplayerApi</span>.<span class="cls">RpcMode</span>.<span class="pr">AnyPeer</span>, <span class="pr">TransferMode</span> = <span class="cls">MultiplayerPeer</span>.<span class="cls">TransferModeEnum</span>.<span class="pr">Unreliable</span>)]
+    <span class="kw">public void</span> <span class="fn">SendInput</span>(<span class="cls">Vector2</span> <span class="vr">inputDir</span>, <span class="kw">bool</span> <span class="vr">jumping</span>)
+    {
+        <span class="kw">if</span> (!<span class="fn">Multiplayer</span>.<span class="fn">IsServer</span>()) <span class="kw">return</span>; <span class="cm">// server validates</span>
+        <span class="vr">_pendingInput</span>  = <span class="vr">inputDir</span>;
+        <span class="vr">_pendingJump</span>   = <span class="vr">jumping</span>;
+    }
+
+    <span class="kw">public override void</span> <span class="fn">_PhysicsProcess</span>(<span class="kw">double</span> <span class="vr">delta</span>)
+    {
+        <span class="kw">if</span> (<span class="fn">IsMultiplayerAuthority</span>())
+        {
+            <span class="cm">// This client owns this player node — read local input</span>
+            <span class="kw">var</span> <span class="vr">dir</span> = <span class="cls">Input</span>.<span class="fn">GetVector</span>(<span class="str">"move_left"</span>,<span class="str">"move_right"</span>,<span class="str">"move_forward"</span>,<span class="str">"move_back"</span>);
+            <span class="fn">Rpc</span>(<span class="cls">MethodName</span>.<span class="pr">SendInput</span>, <span class="vr">dir</span>, <span class="cls">Input</span>.<span class="fn">IsActionJustPressed</span>(<span class="str">"jump"</span>));
+        }
+    }
+}</pre></div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What attribute marks a method as remotely callable in Godot 4 multiplayer?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qNet')"><span class="quiz-key">A</span> [Remote]</div>
+      <div class="quiz-o" onclick="qz(this,false,'qNet')"><span class="quiz-key">B</span> [Network]</div>
+      <div class="quiz-o" onclick="qz(this,true,'qNet')"><span class="quiz-key">C</span> [Rpc]</div>
+      <div class="quiz-o" onclick="qz(this,false,'qNet')"><span class="quiz-key">D</span> [Sync]</div>
+    </div>
+    <div class="quiz-fb" id="qNet"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 15 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: Export &amp; Deploy &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 15: Export & Deploy -->
+<div class="lesson" id="l15">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">16</span>
+      <span class="lesson-cat-badge tag-sys">Export</span>
+    </div>
+    <h1 class="lesson-h1">Export &amp; Deploy</h1>
+    <p class="lesson-lead">Package your Godot 4 C# game for Windows, Linux, macOS, Web, Android, and iOS. Understand export templates, AOT compilation requirements, and platform gotchas.</p>
+  </div>
+
+  <h2>Supported Platforms</h2>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="p-ico">&#x1F5A5;&#xFE0F;</div>
+      <div class="p-name">Windows</div>
+      <div class="p-note">x86-64 &amp; ARM64. .exe + PCK. Easiest export from Windows editor.</div>
+    </div>
+    <div class="platform-card">
+      <div class="p-ico">&#x1F427;</div>
+      <div class="p-name">Linux</div>
+      <div class="p-note">x86-64 &amp; ARM64. Exports as ELF binary. Test on target distro.</div>
+    </div>
+    <div class="platform-card">
+      <div class="p-ico">&#x1F34E;</div>
+      <div class="p-name">macOS</div>
+      <div class="p-note">.app bundle. Requires Apple notarization for distribution outside TestFlight.</div>
+    </div>
+    <div class="platform-card">
+      <div class="p-ico">&#x1F310;</div>
+      <div class="p-name">Web (HTML5)</div>
+      <div class="p-note">WebAssembly. Requires HTTPS + COOP/COEP headers. C# uses interpreter mode.</div>
+    </div>
+    <div class="platform-card">
+      <div class="p-ico">&#x1F916;</div>
+      <div class="p-name">Android</div>
+      <div class="p-note">APK or AAB. Requires Android SDK + JDK. Set up keystore for Play Store.</div>
+    </div>
+    <div class="platform-card">
+      <div class="p-ico">&#x1F4F1;</div>
+      <div class="p-name">iOS</div>
+      <div class="p-note">Xcode + Apple Developer account required. AOT mandatory for App Store.</div>
+    </div>
+  </div>
+
+  <h2>Export Process</h2>
+  <div class="step-row"><div class="step-pill done">1</div><span>Install <strong>Export Templates</strong>: Editor &rarr; Export &rarr; Manage Export Templates &rarr; Download</span></div>
+  <div class="step-row"><div class="step-pill done">2</div><span>Add a preset: <strong>Project &rarr; Export &rarr; Add...</strong> &rarr; select platform</span></div>
+  <div class="step-row"><div class="step-pill done">3</div><span>Configure: set app name, version, icon, and platform-specific options</span></div>
+  <div class="step-row"><div class="step-pill done">4</div><span>For C#: ensure <strong>.NET</strong> version is selected (not GDScript-only template)</span></div>
+  <div class="step-row"><div class="step-pill done">5</div><span>Click <strong>Export Project</strong> (or Export PCK/ZIP for updates only)</span></div>
+
+  <div class="callout warn">
+    <span class="callout-ico">&#x26A0;&#xFE0F;</span>
+    <div><strong>Export Templates are mandatory</strong> &mdash; Godot cannot export without the official templates downloaded for each platform. Templates are version-locked: a 4.3 project needs 4.3 templates. Download from the Godot editor via <em>Editor &rarr; Manage Export Templates</em>.</div>
+  </div>
+
+  <h2>C# AOT Compilation</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">C#</span>
+      <span class="cb-file">PlatformCheck.cs</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">using</span> <span class="cls">Godot</span>;
+
+<span class="kw">public partial class</span> <span class="cls">PlatformCheck</span> : <span class="cls">Node</span>
+{
+    <span class="kw">public override void</span> <span class="fn">_Ready</span>()
+    {
+        <span class="kw">string</span> <span class="vr">os</span> = <span class="cls">OS</span>.<span class="fn">GetName</span>(); <span class="cm">// "Windows", "Linux", "macOS", "Web", "Android", "iOS"</span>
+
+        <span class="kw">switch</span> (<span class="vr">os</span>)
+        {
+            <span class="kw">case</span> <span class="str">"Web"</span>:
+                <span class="cm">// Web uses C# interpreter (no AOT) — avoid heavy reflection</span>
+                <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"Running in browser via WebAssembly"</span>);
+                <span class="kw">break</span>;
+            <span class="kw">case</span> <span class="str">"iOS"</span>:
+                <span class="cm">// iOS requires AOT — all types must be ahead-of-time compiled</span>
+                <span class="cm">// Avoid dynamic code generation (Reflection.Emit, etc.)</span>
+                <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"Running on iOS (AOT mode)"</span>);
+                <span class="kw">break</span>;
+            <span class="kw">default</span>:
+                <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">$"Desktop/Mobile platform: {os}"</span>);
+                <span class="kw">break</span>;
+        }
+
+        <span class="cm">// Check if running in editor vs exported build</span>
+        <span class="kw">if</span> (<span class="cls">OS</span>.<span class="fn">HasFeature</span>(<span class="str">"editor"</span>))
+            <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"Running in Godot editor"</span>);
+        <span class="kw">if</span> (<span class="cls">OS</span>.<span class="fn">HasFeature</span>(<span class="str">"release"</span>))
+            <span class="cls">GD</span>.<span class="fn">Print</span>(<span class="str">"Running as exported release build"</span>);
+    }
+}</pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x1F310;</span>
+    <div><strong>Web Export &amp; CORS</strong> &mdash; Web exports require a web server with the <code>Cross-Origin-Opener-Policy: same-origin</code> and <code>Cross-Origin-Embedder-Policy: require-corp</code> headers to enable SharedArrayBuffer (needed for threading). GitHub Pages does NOT set these by default. Use itch.io or a custom server.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What must you download before you can export a Godot project for any platform?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qExport')"><span class="quiz-key">A</span> Build tools</div>
+      <div class="quiz-o" onclick="qz(this,true,'qExport')"><span class="quiz-key">B</span> Export templates</div>
+      <div class="quiz-o" onclick="qz(this,false,'qExport')"><span class="quiz-key">C</span> NDK</div>
+      <div class="quiz-o" onclick="qz(this,false,'qExport')"><span class="quiz-key">D</span> Xcode</div>
+    </div>
+    <div class="quiz-fb" id="qExport"></div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 16 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-primary" onclick="next()">Next: GUT Testing &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON 16: GUT Testing -->
+<div class="lesson" id="l16">
+  <div class="lesson-hero">
+    <div class="lesson-meta">
+      <span class="lesson-num-badge">17</span>
+      <span class="lesson-cat-badge tag-sys">Testing</span>
+    </div>
+    <h1 class="lesson-h1">GUT Testing</h1>
+    <p class="lesson-lead">Write automated unit and integration tests for your Godot game logic using the GUT (Godot Unit Test) plugin &mdash; run tests in-editor or via CLI for CI/CD pipelines.</p>
+  </div>
+
+  <h2>What is GUT?</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-ico">&#x1F9EA;</div>
+      <div class="card-title">Unit Tests</div>
+      <div class="card-desc">Test isolated functions and classes &mdash; verify that <code>TakeDamage()</code> correctly reduces health, <code>SaveManager.Save()</code> writes files, etc.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F9E9;</div>
+      <div class="card-title">Integration Tests</div>
+      <div class="card-desc">Test how systems interact &mdash; instantiate a Player scene and verify signals fire correctly when health reaches zero.</div>
+    </div>
+    <div class="card">
+      <div class="card-ico">&#x1F3AD;</div>
+      <div class="card-title">Mocking</div>
+      <div class="card-desc">Replace dependencies with test doubles using GUT's <code>double()</code> and <code>stub()</code> to isolate the code under test.</div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-ico">&#x1F4E6;</span>
+    <div><strong>Installing GUT</strong> &mdash; open the Godot <em>AssetLib</em> tab, search for <strong>Gut</strong>, click Install. Then enable it in <em>Project &rarr; Project Settings &rarr; Plugins</em>. A GUT panel will appear at the bottom of the editor. Note: GUT test scripts are written in GDScript, but they can test your C# classes directly.</div>
+  </div>
+
+  <h2>Test Suite Structure</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">GDScript</span>
+      <span class="cb-file">test_player.gd</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">extends</span> <span class="cls">GutTest</span>  <span class="cm"># All test scripts must extend GutTest</span>
+
+<span class="kw">var</span> <span class="vr">player_scene</span> = <span class="fn">load</span>(<span class="str">"res://scenes/characters/Player.tscn"</span>)
+<span class="kw">var</span> <span class="vr">player</span>
+
+<span class="cm"># Called before each test method</span>
+<span class="kw">func</span> <span class="fn">before_each</span>():
+    <span class="vr">player</span> = <span class="vr">player_scene</span>.<span class="fn">instantiate</span>()
+    <span class="fn">add_child</span>(<span class="vr">player</span>)
+
+<span class="cm"># Called after each test method</span>
+<span class="kw">func</span> <span class="fn">after_each</span>():
+    <span class="vr">player</span>.<span class="fn">queue_free</span>()
+
+<span class="cm"># Test methods MUST start with "test_"</span>
+<span class="kw">func</span> <span class="fn">test_take_damage_reduces_health</span>():
+    <span class="vr">player</span>.<span class="fn">TakeDamage</span>(<span class="nm">25.0</span>)
+    <span class="fn">assert_eq</span>(<span class="vr">player</span>.<span class="pr">Health</span>, <span class="nm">75.0</span>, <span class="str">"Health should be 75 after 25 damage"</span>)
+
+<span class="kw">func</span> <span class="fn">test_player_dies_at_zero_health</span>():
+    <span class="kw">var</span> <span class="vr">died_signal_emitted</span> = <span class="kw">false</span>
+    <span class="vr">player</span>.<span class="pr">Died</span>.<span class="fn">connect</span>(<span class="kw">func</span>(): <span class="vr">died_signal_emitted</span> = <span class="kw">true</span>)
+
+    <span class="vr">player</span>.<span class="fn">TakeDamage</span>(<span class="nm">100.0</span>)
+
+    <span class="fn">assert_true</span>(<span class="vr">died_signal_emitted</span>, <span class="str">"Died signal should fire at 0 hp"</span>)
+    <span class="fn">assert_eq</span>(<span class="vr">player</span>.<span class="pr">Health</span>, <span class="nm">0.0</span>, <span class="str">"Health should not go below 0"</span>)
+
+<span class="kw">func</span> <span class="fn">test_player_cannot_take_negative_damage</span>():
+    <span class="vr">player</span>.<span class="fn">TakeDamage</span>(-<span class="nm">50.0</span>)  <span class="cm"># should be ignored or clamped</span>
+    <span class="fn">assert_eq</span>(<span class="vr">player</span>.<span class="pr">Health</span>, <span class="nm">100.0</span>, <span class="str">"Negative damage should not heal"</span>)</pre></div>
+  </div>
+
+  <h2>Testing Game Logic (SaveManager)</h2>
+  <div class="cb">
+    <div class="cb-head">
+      <div class="cb-dots"><div></div><div></div><div></div></div>
+      <span class="cb-lang">GDScript</span>
+      <span class="cb-file">test_save_manager.gd</span>
+      <button class="cb-copy" onclick="copyCode(this)">Copy</button>
+    </div>
+    <div class="cb-body"><pre><span class="kw">extends</span> <span class="cls">GutTest</span>
+
+<span class="kw">var</span> <span class="vr">_save_mgr</span>: <span class="cls">SaveManager</span>
+<span class="kw">const</span> <span class="vr">TEST_PATH</span> = <span class="str">"user://test_save.json"</span>
+
+<span class="kw">func</span> <span class="fn">before_each</span>():
+    <span class="vr">_save_mgr</span> = <span class="cls">SaveManager</span>.<span class="kw">new</span>()
+    <span class="fn">add_child</span>(<span class="vr">_save_mgr</span>)
+
+<span class="kw">func</span> <span class="fn">after_each</span>():
+    <span class="cm"># Clean up test file</span>
+    <span class="kw">if</span> <span class="cls">FileAccess</span>.<span class="fn">file_exists</span>(<span class="vr">TEST_PATH</span>):
+        <span class="cls">DirAccess</span>.<span class="fn">remove_absolute</span>(
+            <span class="cls">ProjectSettings</span>.<span class="fn">globalize_path</span>(<span class="vr">TEST_PATH</span>)
+        )
+    <span class="vr">_save_mgr</span>.<span class="fn">queue_free</span>()
+
+<span class="kw">func</span> <span class="fn">test_save_creates_file</span>():
+    <span class="kw">var</span> <span class="vr">data</span> = <span class="cls">SaveData</span>.<span class="kw">new</span>()
+    <span class="vr">data</span>.<span class="pr">Score</span> = <span class="nm">1500</span>
+    <span class="vr">_save_mgr</span>.<span class="fn">Save</span>(<span class="vr">data</span>)
+    <span class="fn">assert_true</span>(<span class="cls">FileAccess</span>.<span class="fn">file_exists</span>(<span class="str">"user://savegame.json"</span>))
+
+<span class="kw">func</span> <span class="fn">test_load_returns_defaults_when_no_file</span>():
+    <span class="kw">var</span> <span class="vr">data</span> = <span class="vr">_save_mgr</span>.<span class="fn">Load</span>()
+    <span class="fn">assert_eq</span>(<span class="vr">data</span>.<span class="pr">Level</span>, <span class="nm">1</span>)
+    <span class="fn">assert_eq</span>(<span class="vr">data</span>.<span class="pr">Score</span>, <span class="nm">0</span>)
+
+<span class="kw">func</span> <span class="fn">test_save_and_load_roundtrip</span>():
+    <span class="kw">var</span> <span class="vr">original</span> = <span class="cls">SaveData</span>.<span class="kw">new</span>()
+    <span class="vr">original</span>.<span class="pr">Score</span> = <span class="nm">9999</span>
+    <span class="vr">original</span>.<span class="pr">Level</span> = <span class="nm">5</span>
+    <span class="vr">_save_mgr</span>.<span class="fn">Save</span>(<span class="vr">original</span>)
+
+    <span class="kw">var</span> <span class="vr">loaded</span> = <span class="vr">_save_mgr</span>.<span class="fn">Load</span>()
+    <span class="fn">assert_eq</span>(<span class="vr">loaded</span>.<span class="pr">Score</span>, <span class="nm">9999</span>)
+    <span class="fn">assert_eq</span>(<span class="vr">loaded</span>.<span class="pr">Level</span>, <span class="nm">5</span>)</pre></div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-ico">&#x25B6;&#xFE0F;</span>
+    <div><strong>Running Tests</strong> &mdash; in the editor, use the <em>GUT</em> panel at the bottom (select your test directory and click Run All). For CI/CD, run headless: <code>godot --headless -s addons/gut/gut_cmdln.gd -gdir=res://tests/ -gexit</code>. Exit code is non-zero on test failure.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-label">Knowledge Check</div>
+    <div class="quiz-q">What class must all GUT test scripts extend?</div>
+    <div class="quiz-opts">
+      <div class="quiz-o" onclick="qz(this,false,'qGUT')"><span class="quiz-key">A</span> Test</div>
+      <div class="quiz-o" onclick="qz(this,false,'qGUT')"><span class="quiz-key">B</span> UnitTest</div>
+      <div class="quiz-o" onclick="qz(this,true,'qGUT')"><span class="quiz-key">C</span> GutTest</div>
+      <div class="quiz-o" onclick="qz(this,false,'qGUT')"><span class="quiz-key">D</span> GDTest</div>
+    </div>
+    <div class="quiz-fb" id="qGUT"></div>
+  </div>
+
+  <div class="finish-banner">
+    <div class="fb-ico">&#x1F3C6;</div>
+    <div>
+      <div class="fb-h">Codelab Complete!</div>
+      <div class="fb-p">You have completed all 17 lessons of the Godot 4 C# 3D Codelab. You now have the skills to build complete 3D games with movement, AI, audio, UI, saves, VFX, shaders, multiplayer, exports, and automated tests. Ship it!</div>
+    </div>
+  </div>
+
+  <div class="lesson-footer">
+    <div class="footer-progress">Lesson 17 of 17</div>
+    <div class="footer-btns">
+      <button class="btn btn-ghost" onclick="prev()">&#8592; Prev</button>
+      <button class="btn btn-finish" onclick="restart()">&#x1F504; Restart Codelab</button>
+    </div>
+  </div>
+</div>
+
+  </div><!-- end lesson-wrap -->
+</div><!-- end main -->
+
+</div><!-- end app -->
+<script src="app.js"></script>
+</body>
+</html>
